@@ -24,6 +24,26 @@ Generators, flags, library names and recommended config change between releases.
 
 Do these in order. After each phase, run the project's test or build command. Do not move on with a red step; fix it or tell the user why it cannot be fixed.
 
+### Phase 0: Preview (the one pause before files are written)
+
+Before Phase 1, show one screen and wait for a yes. This is the last point at which nothing has been generated.
+
+```
+About to create <project name> with <framework> (<generator command>):
+
+  Phase 1  skeleton          <generator>, TypeScript
+  Phase 2  quality           <linter + formatter>, <type checker>, <test runner>
+  Phase 3  security          headers, rate limit, validation, 6 OWASP baseline tests, gitleaks
+  Phase 4  data + auth       <database>, <migrations tool>, <auth provider>
+  Phase 5  CI + deploy       <CI>, <hosting> config
+  Phase 6  docs              README, .env.example, architecture note, runbook, CHANGELOG, LICENSE
+  Phase 7  first feature     "<feature in the user's words>" via kickstart-feature (spec approval first)
+
+Roughly <n> files, <n> commits, ~<minutes>. Go, or change something?
+```
+
+Accept "go", a phase to skip (record `skipped` in `project.md`), or a swap (for example "biome instead of eslint"). Do not ask again between phases; the per-phase red/green check is the only other stop until Phase 7's spec review.
+
 ### Phase 1: Skeleton (official generator)
 
 Use the framework's own scaffolder with a non-interactive flag set where possible, for example `create-next-app`, `django-admin startproject`, `rails new`, `laravel new`, `dotnet new`, `cargo init`, `go mod init`, `npm create svelte`, `npx create-expo-app`, `flutter create`, `npm create astro`. Choose TypeScript when the language is JavaScript-family. Commit: `chore: scaffold <framework>`.

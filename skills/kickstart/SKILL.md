@@ -48,7 +48,7 @@ Record both answers in `.kickstart/project.md` before continuing.
 5. Invoke **kickstart-compliance** with region, industry and stack. It proposes frameworks (OWASP Top 10 always on). User confirms or edits the list. It writes `.kickstart/compliance.md`.
 6. Write `.kickstart/project.md` (template below) with everything decided so far.
 7. Invoke **kickstart-constitution**. It writes `.kickstart/constitution.md`, the versioned rules every later plan is checked against, seeded from the decisions so far, and asks one question about house rules.
-8. Invoke **kickstart-scaffold** with the chosen stack. It creates the runnable project, CI, tests, scanning, docs, auth, database, deploy config and the first feature, built through the `kickstart-feature` spec workflow.
+8. Invoke **kickstart-scaffold** with the chosen stack. It shows a one-screen preview of what it will generate and waits for a yes, then creates the runnable project, CI, tests, scanning, docs, auth, database, deploy config and the first feature, built through the `kickstart-feature` spec workflow.
 9. Invoke **kickstart-guardrails** with the enforcement choice. It installs hooks, CI gates and agent hooks.
 10. Write the `CLAUDE.md` block (below). If `AGENTS.md` exists or the user's agent is not Claude, write the same block there.
 11. Finish with a short summary: what was created, how to run it, and the most useful next steps by their plain-language triggers: add a feature, fix a bug, release, refresh dependencies.
