@@ -216,6 +216,20 @@ kickstart-skills/
 └── README.md
 ```
 
+## Make it yours
+
+Every opinion in kickstart lives in a plain file, so a team can fork this repo and ship its own internal `/kickstart`:
+
+| You want to change | Edit |
+|---|---|
+| Default stacks and their costs | `skills/kickstart-stack-advisor/` |
+| Compliance frameworks and controls | `skills/kickstart-compliance/` |
+| The MUST/SHOULD rules every plan is checked against | `skills/kickstart-constitution/` |
+| What the audit measures and how it scores | `skills/kickstart-audit/scripts/audit.py` |
+| Which guardrails are installed | `skills/kickstart-guardrails/` |
+
+Click **Use this template** on GitHub, point `npx skills add your-org/your-kickstart` at the result, and every teammate gets your rules.
+
 ## Credits
 
 The idea assessment, the spec-driven feature workflow, the constitution and the bug process are adapted from [GitHub Spec Kit](https://github.com/github/spec-kit) (MIT). Kickstart adds mandatory tests, compliance gates and the freshness rules. Details in [docs/ATTRIBUTION.md](docs/ATTRIBUTION.md).
