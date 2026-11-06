@@ -1,0 +1,10 @@
+{
+  "name": "kickstart-skills",
+  "version": "0.3.0",
+  "description": "One /kickstart command: production-grade scaffold, audit, compliance and guardrails for any agent.",
+  "bin": { "kickstart-skills": "scripts/install.js" },
+  "files": ["scripts/install.js"],
+  "repository": "github:iponnam/kickstart-skills",
+  "license": "MIT",
+  "engines": { "node": ">=18" }
+}
