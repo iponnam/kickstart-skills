@@ -80,4 +80,6 @@ Proposed changes, ranked by score gain per hour
 Doing 1 and 2 gets you to about 76. Adding 3–6 gets you to about 85.
 ```
 
+Note: the three "unsafe patterns" flagged inside `.agents/` were a scanner bug (it matched its own regex table in the installed skill). Fixed in audit.py 0.1.1, which excludes agent folders. The Dockerfile and `.env.example` overrides are genuine platform judgement and still apply.
+
 Nothing was changed in the repo at this point. The audit proposes; the user picks; each applied change is re-measured.
