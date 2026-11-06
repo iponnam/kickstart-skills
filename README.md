@@ -4,6 +4,8 @@
 
 `kickstart` is a bundle of agent skills that bakes engineering, security, vulnerability and compliance guidelines into every project, so you only have to think about *what* you want to build.
 
+<p align="center"><img src="docs/demo/demo.gif" alt="/kickstart auditing an existing repo: score 58/100, critical findings, and a fix applied with before/after numbers" width="960"></p>
+
 It works for **new projects** (recommend a stack, scaffold a runnable app with CI, tests, security scanning, auth, database, deployment and a first feature) and for **existing projects** (audit, score, and propose changes with numbers you can read in thirty seconds).
 
 Works with Claude Code, Cursor, Codex, OpenCode and any agent that reads the open [Agent Skills](https://agentskills.io) format.
