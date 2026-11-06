@@ -17,12 +17,13 @@ Works with Claude Code, Cursor, Codex, OpenCode and any agent that reads the ope
 **Any agent (recommended):**
 
 ```bash
-npx github:iponnam/kickstart-skills
+npx github:iponnam/kickstart-skills -a claude-code   # Claude Code
+npx github:iponnam/kickstart-skills -a cursor        # Cursor
+npx github:iponnam/kickstart-skills -a codex         # Codex
+npx github:iponnam/kickstart-skills                  # pick from 79 agents
 ```
 
-This runs `npx skills add iponnam/kickstart-skills` for you and prints the next steps when it's done. Flags pass through (`-g`, `-a claude-code`). If you'd rather call the skills CLI directly, that command works on its own too.
-
-When it asks **which agents**, tick the one you actually use (Claude Code, Cursor, Codex…). Skills are only copied into the agents you select. Add `-g` to install for every project on your machine instead of just the current one.
+This runs `npx skills add iponnam/kickstart-skills` for you and prints the next steps when it's done. Skills are only copied into the agents you name or tick, so name yours. Add `-g` to install for every project on your machine instead of just the current one. Calling `npx skills add iponnam/kickstart-skills` directly works too.
 
 **Then open the project in your agent and type:**
 

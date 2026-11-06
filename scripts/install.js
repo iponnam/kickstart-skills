@@ -4,9 +4,12 @@
 // Usage: npx github:iponnam/kickstart-skills [skills add flags, e.g. -g, -a claude-code]
 "use strict";
 const { spawnSync } = require("node:child_process");
+const { existsSync } = require("node:fs");
+const { join } = require("node:path");
+const { homedir } = require("node:os");
 
 const REPO = "iponnam/kickstart-skills";
-const B = "\x1b[1m", D = "\x1b[2m", C = "\x1b[36m", G = "\x1b[32m", N = "\x1b[0m";
+const B = "\x1b[1m", D = "\x1b[2m", C = "\x1b[36m", G = "\x1b[32m", Y = "\x1b[33m", N = "\x1b[0m";
 
 const result = spawnSync("npx", ["skills", "add", REPO, ...process.argv.slice(2)], {
   stdio: "inherit",
@@ -20,11 +23,26 @@ if (result.error) {
 }
 if (result.status !== 0) process.exit(result.status ?? 1);
 
+// Agents people most often expect and most often forget to tick in the 79-agent picker.
+const AGENTS = [
+  { name: "Claude Code", flag: "claude-code", dir: ".claude/skills" },
+  { name: "Cursor", flag: "cursor", dir: ".cursor/skills" },
+  { name: "Codex", flag: "codex", dir: ".codex/skills" },
+];
+const global = process.argv.includes("-g") || process.argv.includes("--global");
+const root = global ? homedir() : process.cwd();
+const has = (a) => existsSync(join(root, a.dir, "kickstart"));
+const installed = AGENTS.filter(has).map((a) => a.name);
+const missing = AGENTS.filter((a) => !has(a));
+
 const lines = [
   `${B}Next steps${N}`,
   ``,
-  `1. Open this project in the agent you selected above (Claude Code, Cursor, Codex…).`,
-  `   ${D}Skills were only copied for the agents you ticked. Missed one? Re-run with -a <agent>.${N}`,
+  `1. Open this project in the agent you selected above.`,
+  installed.length
+    ? `   ${G}✓${N} Ready for: ${installed.join(", ")}`
+    : `   ${Y}!${N} Not installed for Claude Code, Cursor or Codex. Skills only go to the agents you ticked.`,
+  ...missing.map((a) => `   ${D}Need ${a.name}? Re-run with:${N} npx github:${REPO} -a ${a.flag}${global ? " -g" : ""}`),
   `2. Type:`,
   ``,
   `     ${C}${B}/kickstart${N}`,
