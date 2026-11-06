@@ -1,5 +1,9 @@
 # Stack catalog
 
+last_verified: never
+
+Written 2026-11-06 from general knowledge. Under the skill's freshness rule, confirm each recommended framework's current major version, maintenance status and generator command on its official site or releases page before presenting it. Library names below are suggestions, not version pins.
+
 Curated, production-proven stacks by archetype. Each entry lists what kickstart-scaffold will generate. "Ops" is the operational burden: 1 (none) to 5 (you run servers).
 
 Legend: FE front end, BE back end, DB database, Host hosting, CI continuous integration. All stacks get: lint, format, tests, secret scanning, dependency scanning, security headers, structured logging, health endpoint, Dockerfile where applicable, and docs.

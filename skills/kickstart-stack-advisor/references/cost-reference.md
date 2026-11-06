@@ -1,6 +1,65 @@
 # Cost reference
 
-Approximate list prices in USD as of late 2026. Prices change often. Always tell the user the date of this reference and to verify on the provider's pricing page. Use these to build the three-tier table (Launch / Growing / Scale).
+last_verified: never
+
+These are seed values written on 2026-11-06 from general knowledge, not fetched from pricing pages. Treat every number as stale. Under the skill's freshness rule, fetch the official pricing page (table below) for each provider you present, and use the fetched figure. Fall back to a seed value only when the page cannot be reached, labelled `as of 2026-11-06, not re-checked`. When this file is refreshed from the official pages, set `last_verified:` to the ISO timestamp of that check.
+
+Use these to build the three-tier table (Launch / Growing / Scale).
+
+## Official pricing pages
+
+| Provider | Pricing page |
+|---|---|
+| Vercel | https://vercel.com/pricing |
+| Netlify | https://www.netlify.com/pricing/ |
+| Cloudflare Workers / Pages / R2 | https://developers.cloudflare.com/workers/platform/pricing/ · https://developers.cloudflare.com/r2/pricing/ |
+| Railway | https://railway.com/pricing |
+| Render | https://render.com/pricing |
+| Fly.io | https://fly.io/docs/about/pricing/ |
+| Heroku | https://www.heroku.com/pricing |
+| Google Cloud Run / Cloud SQL / GCS | https://cloud.google.com/run/pricing · https://cloud.google.com/sql/pricing · https://cloud.google.com/storage/pricing |
+| AWS (App Runner, Fargate, RDS, S3, SES) | https://aws.amazon.com/pricing/ (service pages linked from there) |
+| Azure | https://azure.microsoft.com/pricing/ |
+| Hetzner | https://www.hetzner.com/cloud/ |
+| DigitalOcean | https://www.digitalocean.com/pricing |
+| Laravel Cloud / Forge | https://cloud.laravel.com/pricing · https://forge.laravel.com/pricing |
+| Supabase | https://supabase.com/pricing |
+| Firebase | https://firebase.google.com/pricing |
+| Neon | https://neon.com/pricing |
+| PlanetScale | https://planetscale.com/pricing |
+| Turso | https://turso.tech/pricing |
+| MongoDB Atlas | https://www.mongodb.com/pricing |
+| Upstash | https://upstash.com/pricing |
+| Pinecone | https://www.pinecone.io/pricing/ |
+| Clerk | https://clerk.com/pricing |
+| Auth0 | https://auth0.com/pricing |
+| WorkOS | https://workos.com/pricing |
+| Resend | https://resend.com/pricing |
+| Postmark | https://postmarkapp.com/pricing |
+| SendGrid | https://sendgrid.com/en-us/pricing |
+| Brevo | https://www.brevo.com/pricing/ |
+| Mailgun | https://www.mailgun.com/pricing/ |
+| Stripe | https://stripe.com/pricing |
+| Razorpay | https://razorpay.com/pricing/ |
+| Cashfree | https://www.cashfree.com/payment-gateway-charges/ |
+| PayPal | https://www.paypal.com/us/business/paypal-business-fees |
+| Adyen | https://www.adyen.com/pricing |
+| Paddle | https://www.paddle.com/pricing |
+| Lemon Squeezy | https://www.lemonsqueezy.com/pricing |
+| Backblaze B2 | https://www.backblaze.com/cloud-storage/pricing |
+| Anthropic API | https://www.anthropic.com/pricing |
+| OpenAI API | https://openai.com/api/pricing/ |
+| Google Gemini API | https://ai.google.dev/pricing |
+| Groq / Together / Fireworks | https://groq.com/pricing · https://www.together.ai/pricing · https://fireworks.ai/pricing |
+| Sentry | https://sentry.io/pricing/ |
+| Better Stack | https://betterstack.com/pricing |
+| Grafana Cloud | https://grafana.com/pricing/ |
+| Datadog | https://www.datadoghq.com/pricing/ |
+| PostHog | https://posthog.com/pricing |
+| Plausible | https://plausible.io/#pricing |
+| GitHub | https://github.com/pricing |
+
+If a page has moved, find the new one from the provider's own home page. Do not take prices from comparison sites or blogs.
 
 Assumptions for tiers unless the user gives numbers:
 - **Launch**: 0–100 users, under 10k requests/day, under 1 GB data.

@@ -440,7 +440,7 @@ class Audit:
             score += 40
             score += min(20, n)  # up to 20 for breadth
         else:
-            self.add("tests", "high", "no test files found", rec="Add a test runner and the five baseline security tests")
+            self.add("tests", "high", "no test files found", rec="Add a test runner and the six baseline security tests")
         cov = self.coverage()
         self.numbers["coverage_percent"] = cov
         if cov is not None:
@@ -663,9 +663,9 @@ class Audit:
             if not steps.get("test"):
                 p("Run tests in CI", "ci", 15, "S 20m", "none", "Add test step")
         if not n.get("test_files"):
-            p("Add test runner and baseline security tests", "tests", 55, "M 1–2h", "none", "Runner config, one unit test, five OWASP tests")
+            p("Add test runner and baseline security tests", "tests", 55, "M 1–2h", "none", "Runner config, one unit test, six OWASP baseline tests")
         elif not n.get("security_tests"):
-            p("Add the five baseline security tests", "tests", 10, "M 1–2h", "none", "401/403, cross-user, bad input, rate limit, headers")
+            p("Add the six baseline security tests", "tests", 10, "M 1–2h", "none", "401/403, cross-user, bad input, rate limit, headers, fail closed")
         if n.get("ecosystems") and not n.get("security_headers"):
             p("Add security headers middleware", "security", 8, "S 30m–1h", "CSP may need tuning", "helmet / secure_headers / SecurityMiddleware")
         if n.get("ecosystems") and not n.get("rate_limiting"):

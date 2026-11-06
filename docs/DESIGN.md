@@ -31,6 +31,10 @@ Non-technical readers cannot evaluate "you should add rate limiting". They can e
 
 Frameworks are large. Engineering teams need to know what to build, what is done, and what is deliberately out of scope. `implemented | planned | n/a` with an evidence pointer is the smallest format that an auditor, a founder and an agent can all read. The catalog is tagged by region, industry and trigger so the recommendation step is a filter, not a lecture.
 
+## Why freshness rules (24 hours for stack, 60 days for compliance)
+
+Compliance deadlines, framework editions, prices and library versions change faster than any model's training data. During the first research pass for this repo, official sources overturned a dozen of the original catalog's claims, including the current OWASP Top 10 edition, the PCI DSS version and the Cyber Essentials version. So no skill states such a fact from memory. Bundled records carry `official_sources` and a `last_verified` timestamp. Tech stack facts (prices, free tiers, versions, generator commands) change weekly, so they expire after 24 hours. Compliance framework records change on legislative and standards cycles, so they expire after 60 days, or sooner when a record's Notes show a pending change has taken effect. When a record is past its age, the agent re-fetches the official pages for the frameworks, providers or libraries it is about to use, updates a project-local copy under `.kickstart/cache/`, and stamps it with `freshness.py mark`. Only what the current step needs is re-checked, which keeps it to a handful of fetches. If a source is unreachable, work continues with the older value, clearly labelled.
+
 ## Why enforced vs advised is a mode, not a fork
 
 The checks are identical in both modes; only the exit code differs. A single shim (`kickstart-mode.sh`) reads the mode from `project.md`, so switching is a one-line edit and the hook, CI and agent layers all follow.

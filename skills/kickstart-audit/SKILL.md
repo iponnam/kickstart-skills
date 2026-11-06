@@ -33,7 +33,7 @@ Seven categories, each 0–100, weighted into the overall score:
 |---|---|---|
 | Security | 25 | Secrets found (critical: −40 each, capped), unsafe patterns, missing headers middleware, missing rate limit, `.env` committed, debug on in prod config |
 | Dependencies | 20 | Lockfile present, vulnerability counts by severity (critical −15, high −5, medium −1, capped), outdated major count, automated updates (Dependabot/Renovate) |
-| Tests | 15 | Test files exist, test runner configured, coverage percentage if a report exists, security tests present (the five OWASP minimums) |
+| Tests | 15 | Test files exist, test runner configured, coverage percentage if a report exists, security tests present (the six OWASP baseline tests) |
 | CI/CD | 15 | CI config exists, runs lint + test + scan, pinned actions, deploy config present, branch protection evidence |
 | Documentation | 10 | README with run instructions, `.env.example`, architecture note, runbook, changelog, licence |
 | Operability | 10 | Health endpoint, structured logging, error tracking, Dockerfile or platform config, migrations tool, backups mentioned |
@@ -81,7 +81,7 @@ Rank by score gain per hour. Each proposal has exactly these fields:
    What changes: <one or two sentences, concrete files>
 ```
 
-Effort estimates come from `references/effort-table.md`. Always include, when applicable, in this order: rotate and purge secrets, fix critical vulnerabilities, add secret scanning pre-commit and CI, add lockfile, add dependency scanning in CI, add the five security tests, add security headers, add health endpoint and structured logging, add `.env.example` and README run section, add Dependabot/Renovate, add compliance checklist, add Dockerfile, add runbook.
+Effort estimates come from `references/effort-table.md`. Always include, when applicable, in this order: rotate and purge secrets, fix critical vulnerabilities, add secret scanning pre-commit and CI, add lockfile, add dependency scanning in CI, add the six baseline security tests, add security headers, add health endpoint and structured logging, add `.env.example` and README run section, add Dependabot/Renovate, add compliance checklist, add Dockerfile, add runbook.
 
 Show the top 10. Offer "more" for the rest.
 

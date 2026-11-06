@@ -14,7 +14,7 @@ Typical effort for one engineer familiar with the stack, starting from a repo th
 | Add dependency scan to CI | 20m | Dependencies +10, CI +10 | |
 | Add Dependabot/Renovate config | 15m | Dependencies +10 | Weekly, grouped |
 | Add test runner and first test | 1h | Tests +25 | |
-| Add the five OWASP security tests | 1–2h | Tests +15, Security +5 | |
+| Add the six OWASP baseline security tests | 1–2h | Tests +15, Security +5 | |
 | Reach 60% coverage on a mid-size app | 1–3d | Tests +20 | Only if the user wants it |
 | Add CI workflow (lint, test, build) | 1h | CI +40 | |
 | Pin actions to tags / digests | 20m | CI +5 | |

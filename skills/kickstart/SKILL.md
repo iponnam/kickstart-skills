@@ -143,8 +143,27 @@ This project was set up with kickstart. Before making changes:
 3. For new features use the kickstart-feature workflow (spec, plan, build, test, review).
 4. Before a release run the kickstart-release checklist.
 5. Never commit secrets. Never disable a guardrail to make a check pass. Fix the cause.
+6. Never state a price, library version, compliance deadline or framework version from memory. Use `.kickstart/cache/` only if its `last_verified` is within the allowed age: 24 hours for tech stack facts, 60 days for compliance framework records. Otherwise re-check the official source first and update the cache.
 <!-- kickstart:end -->
 ```
+
+## Freshness: never rely on memory
+
+Some facts change faster than any model's training data: compliance frameworks and their deadlines, prices and free tiers, framework and library versions, generator commands, and vulnerability data. Every `kickstart-*` skill follows one rule for them:
+
+- Use only facts checked against the official source within the allowed age:
+
+  | Kind of fact | Maximum age | Checked by |
+  |---|---|---|
+  | Tech stack: prices, free tiers, framework and library versions, generator commands | **24 hours** | `kickstart-stack-advisor`, `kickstart-scaffold`, `kickstart-refresh` |
+  | Compliance frameworks: versions, scope, deadlines, thresholds, penalties | **60 days**, or sooner when a known change takes effect | `kickstart-compliance` (`freshness.py`) |
+  | Vulnerability data | Always live | Scanners run at the time of the check |
+
+- Bundled reference files and the project cache under `.kickstart/cache/` carry a `last_verified:` timestamp. Older than the allowed age means re-fetch from the official source before use, then update the cache.
+- If the official source cannot be reached, continue with the older value, label it `unverified since <date>`, and tell the user which source failed.
+- Fetch only what the current step uses, so the check stays fast.
+
+Tell the user this once, during setup, in one sentence.
 
 ## Tone and behaviour
 

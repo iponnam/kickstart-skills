@@ -27,7 +27,7 @@ Run and report each as pass / warn / fail:
 | 8 | Changelog | `CHANGELOG.md` Unreleased section | empty |
 | 9 | Env parity | compare `.env.example` keys with production config (ask the user or check platform CLI) | missing variable in production |
 | 10 | Monitoring | error tracker DSN set in prod, health endpoint reachable, uptime check exists | any missing (`scale`); warn for `pet` |
-| 11 | Compliance | `.kickstart/compliance.md` rows touched since last release have status and evidence | stale rows |
+| 11 | Compliance | `.kickstart/compliance.md` rows touched since last release have status and evidence; framework records re-verified within 60 days via `kickstart-compliance` (its `freshness.py check`) so the release is judged against current deadlines and obligations | stale rows, or a framework changed and the checklist was not updated |
 | 12 | Rollback plan | `docs/runbook.md` rollback section present and matches the hosting platform | missing |
 
 In `enforced` mode, any `fail` stops here. In `advised` mode, list the fails, say "ADVISED: would have blocked", and ask for an explicit "proceed anyway".

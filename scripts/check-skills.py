@@ -25,6 +25,7 @@ for skill_dir in sorted(p for p in root.iterdir() if p.is_dir()):
         print(f"FAIL {skill_dir.name}: description missing or over 1024 chars ({len(desc)})"); ok = False
     body = text[m.end():]
     for ref in re.findall(r"`((?:references|scripts|templates)/[^`]+)`", body):
+        if "<" in ref: continue
         if not (skill_dir / ref).exists():
             print(f"FAIL {skill_dir.name}: referenced file missing: {ref}"); ok = False
     words = len(body.split())

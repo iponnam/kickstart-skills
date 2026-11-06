@@ -70,6 +70,7 @@ If Dependabot or Renovate is not configured, add it with weekly grouped minor/pa
 
 ## Rules
 
+- Vulnerability and version facts come only from tools run now (the ecosystem audit command, `osv-scanner`, the registry) and from each package's official changelog or migration guide fetched now. Never decide a package is safe, current or breaking from memory.
 - Security fixes are never deferred. If one requires a breaking major, do that major now.
 - Never update everything in one commit. Bisecting a 40-package bump at midnight is how refreshes get abandoned.
 - Do not change code behaviour during a refresh except what a migration guide requires. Note other needed changes as follow-ups.

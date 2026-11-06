@@ -2,7 +2,7 @@
 
 Thanks for helping make kickstart better. The most valuable contributions, in order:
 
-1. **Framework catalog corrections** in `skills/kickstart-compliance/references/framework-catalog.md` and control sets in `control-checklists.md`. Regulations change; cite the source and date.
+1. **Framework record updates** in `skills/kickstart-compliance/references/frameworks/<id>.md`. Every fact must come from the framework's official governing body (regulator, standard owner, legislature or official gazette), with the exact URL and access date. Vendors, law firms, Wikipedia and news are not accepted as sources. Update `last_verified` and `verification`, then regenerate the catalog with `python3 scripts/build-catalog.py`. Do not edit `framework-catalog.md` by hand.
 2. **Cost updates** in `skills/kickstart-stack-advisor/references/cost-reference.md`. Include the provider pricing page URL and the date.
 3. **Stack profiles** in `skills/kickstart-stack-advisor/references/stack-catalog.md` and matching scaffold notes in `skills/kickstart-scaffold/references/layouts.md`.
 4. **Audit detections** in `skills/kickstart-audit/scripts/audit.py`: new unsafe patterns, new scanner integrations, better coverage parsing. Keep it standard-library only.
@@ -26,6 +26,10 @@ Keep `SKILL.md` focused on procedure. Put long reference material in `references
 ```bash
 # frontmatter and structure
 python3 scripts/check-skills.py
+
+# framework records: required keys, official sources, sections, catalog links
+python3 scripts/build-catalog.py
+python3 scripts/check-frameworks.py
 
 # audit script against a sample repo
 python3 skills/kickstart-audit/scripts/audit.py --repo /path/to/some/repo --out /tmp/kickstart-audit

@@ -66,7 +66,7 @@ You can call any skill directly, but `/kickstart` routes to them for you.
 | [`kickstart-stack-advisor`](skills/kickstart-stack-advisor/SKILL.md) | New project, or "which stack should I use" | Turns a plain-language description into 2–3 concrete stack options with hosting, third-party service and AI API costs, plus pros and cons for pet vs scale. Works for non-technical users. |
 | [`kickstart-scaffold`](skills/kickstart-scaffold/SKILL.md) | New project after a stack is chosen | Generates a runnable project: app skeleton, CI, lint and format, tests, secret and dependency scanning, docs, auth, database, deploy config, and the first feature. |
 | [`kickstart-audit`](skills/kickstart-audit/SKILL.md) | Existing repo, or "how healthy is this codebase" | Runs `scripts/audit.py` to measure security, dependencies, tests, CI, docs and compliance. Produces an executive summary with a 0–100 score and a drill-down report. Every proposed change comes with before/after numbers. |
-| [`kickstart-compliance`](skills/kickstart-compliance/SKILL.md) | During setup, or "what compliance do I need" | OWASP Top 10 is always on. Recommends further frameworks from a catalog of 70+ (SOC 2, ISO 27001, GDPR, HIPAA, PCI DSS, DPDP, DORA, RBI, MAS…) based on your region and industry. You pick. Writes engineering-level checklists, not legal fluff. |
+| [`kickstart-compliance`](skills/kickstart-compliance/SKILL.md) | During setup, or "what compliance do I need" | OWASP Top 10 is always on. Recommends further frameworks from 85 records (SOC 2, ISO/IEC 27001, GDPR, HIPAA, PCI DSS, DPDPA, DORA, NIS 2, EU AI Act, RBI, SEBI, MAS, SAMA…) based on your region and industry. Every record cites its official governing body and is re-verified when older than 60 days. You pick. Writes engineering-level checklists, not legal fluff. |
 | [`kickstart-guardrails`](skills/kickstart-guardrails/SKILL.md) | During setup, or "add pre-commit hooks" | Installs the enforced or advised guardrails: secret scanning, dependency audit, lint, tests, and agent hooks. Same checks locally, in CI, and in the agent. |
 | [`kickstart-feature`](skills/kickstart-feature/SKILL.md) | "Add a feature", "build X", "implement Y" | Spec, plan, build, test, review. Reads `.kickstart/project.md` so every feature respects the stack, scale and compliance decisions. |
 | [`kickstart-release`](skills/kickstart-release/SKILL.md) | "Ship it", "release", "deploy to production" | Pre-release checklist: tests, vulnerabilities, secrets, migrations, rollback plan, changelog, monitoring. Blocks or warns per your enforcement choice. |
@@ -95,6 +95,7 @@ your-project/
 ├── .kickstart/
 │   ├── project.md        # stack, scale, enforcement, owners: the source of truth for agents
 │   ├── compliance.md     # chosen frameworks and control checklist with status
+│   ├── cache/            # official-source records and prices, each with last_verified (24h for stack, 60d for compliance)
 │   ├── decisions/        # one file per architectural decision (ADR format)
 │   └── audit/
 │       └── latest.md     # most recent audit summary and score
@@ -168,6 +169,7 @@ kickstart → audit:
 3. **Numbers, not lectures.** Every recommendation says what changes and by how much.
 4. **Decisions persist.** Agents forget. Files don't. `.kickstart/` is the project's memory.
 5. **Compliance is engineering.** A control is a piece of code, config or process, with a status. Not a PDF.
+6. **Official sources, never memory.** Every framework fact cites its governing body: the regulator, standard owner or official gazette. Prices, free tiers and library versions older than 24 hours, and compliance framework records older than 60 days, are re-checked against the official source before use and cached in `.kickstart/cache/` with a timestamp. If a source cannot be reached, the value is shown as `unverified since <date>`.
 
 ---
 

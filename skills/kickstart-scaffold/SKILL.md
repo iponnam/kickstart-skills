@@ -11,6 +11,15 @@ Produce a project a stranger can clone, run and deploy in five minutes, with sec
 
 From `.kickstart/project.md`: stack block, `scale`, `enforcement`. From `.kickstart/compliance.md`: the top planned controls. From the user: the first feature (ask in one line if not yet known: "What is the first thing a user should be able to do?").
 
+## The freshness rule (mandatory)
+
+Generators, flags, library names and recommended config change between releases. Do not scaffold from memory.
+
+- Before Phase 1, open the framework's official getting-started or installation page and use the generator command and flags it shows today. If it differs from `references/layouts.md`, follow the official page and note the difference in `.kickstart/decisions/0001-stack.md`.
+- Before adding any security, logging, auth or testing library from `references/layouts.md`, confirm on its official repository or registry page that it is maintained and see its current major version. Pick a maintained alternative if it is archived or deprecated.
+- Never write a version number into a manifest from memory. Let the package manager resolve the latest stable version and commit the lockfile.
+- `references/layouts.md` was last checked as shown on its `last_verified:` line. Treat anything there older than 24 hours as a starting point, not a source of truth.
+
 ## Order of work
 
 Do these in order. After each phase, run the project's test or build command. Do not move on with a red step; fix it or tell the user why it cannot be fixed.
@@ -41,13 +50,13 @@ Implement the OWASP controls from `kickstart-compliance/references/owasp-top10.m
 - Error tracking hook point (Sentry DSN read from env, no-op if unset).
 - Health endpoint `/health` returning build version and DB connectivity.
 - Secret scanning and dependency scanning wired into CI (Phase 5) and into hooks via `kickstart-guardrails`.
-- The five minimum security tests from the OWASP reference (401 on protected route, cross-user access denied, bad body rejected, login rate-limited, headers present).
+- The six baseline security tests from the OWASP reference (401 on protected route, cross-user access denied, bad body rejected, login rate-limited, headers present, fail closed on error).
 
 ### Phase 4: Data and auth
 
 - Database per `project.md` with migrations tool (Prisma/Drizzle, Alembic, Django migrations, Rails migrations, golang-migrate/goose, Flyway, EF Core, sqlx).
 - Local dev database via `docker-compose.yml` (Postgres, Redis if needed) or SQLite for `pet` when the stack allows.
-- Auth per `project.md`: provider SDK wired, or library with sessions configured per OWASP A07 (HttpOnly, Secure, SameSite, rotation). Signup, login, logout, password reset flows (or provider-hosted equivalents). One `User` model with timestamps and soft-delete flag for privacy-law deletion handling.
+- Auth per `project.md`: provider SDK wired, or library with sessions configured per OWASP A07:2025 (HttpOnly, Secure, SameSite, rotation). Signup, login, logout, password reset flows (or provider-hosted equivalents). One `User` model with timestamps and soft-delete flag for privacy-law deletion handling.
 - Seed script with one admin and sample data for local dev.
 
 ### Phase 5: CI and deploy

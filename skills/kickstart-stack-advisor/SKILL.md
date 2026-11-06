@@ -7,6 +7,16 @@ description: Turns a plain-language description of what someone wants to build i
 
 Give people a decision, not a survey. Three options maximum, one recommended, costs in real numbers, trade-offs in plain words.
 
+## The freshness rule (mandatory)
+
+Prices, free-tier limits, framework versions and product names change monthly. Never quote them from memory.
+
+1. Check the age of the bundled data: `references/cost-reference.md` and `references/stack-catalog.md` each start with a `last_verified:` line. Also check the project cache `.kickstart/cache/pricing.md` if it exists.
+2. If the newest of those is more than **24 hours** old, fetch the official pricing page for every provider that appears in the options you are about to present. The URLs are in the "Official pricing pages" table of `references/cost-reference.md`. For each framework you recommend, fetch its official releases or docs page to confirm the current major version and that it is still maintained.
+3. Write what you fetched to `.kickstart/cache/pricing.md`: one row per provider with plan, price, free-tier limits, the URL and an ISO timestamp. Use those numbers in the cost table, not the bundled ones.
+4. If a page cannot be fetched, use the bundled figure and label it `as of <last_verified date>, not re-checked`. Say which provider could not be checked.
+5. Only check what you present. Three options means at most about a dozen pricing pages.
+
 ## Inputs you need
 
 Ask only for what is missing. Usually kickstart has already collected these.
@@ -67,7 +77,7 @@ Rules:
 - Separate fixed costs from usage-based fees. Payments are a percentage; say "2.9% + $0.30 per transaction" rather than a monthly figure, then give an example at an assumed volume.
 - For AI: state the assumption (requests per day, tokens per request, model) and show the math on one line.
 - Free tiers count, but flag their limits (sleeping instances, row caps, monthly active user caps) and when the user will outgrow them.
-- Prices change. Date the estimate and tell the user to verify on the providers' pricing pages before committing. Never present a cost as exact.
+- Every price comes from a pricing page fetched within the last 24 hours (see the freshness rule) or carries its `as of` label. Show the check date under the table. Present costs as estimates, never as exact.
 
 ## Step 4: Trade-offs
 

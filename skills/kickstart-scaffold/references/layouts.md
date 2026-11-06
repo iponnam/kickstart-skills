@@ -1,5 +1,9 @@
 # Per-ecosystem scaffold notes
 
+last_verified: never
+
+Written 2026-11-06 from general knowledge. Confirm every generator command and library on its official page before use (see the skill's freshness rule).
+
 What to run, where things go, and which libraries implement each production piece. Versions are deliberately not pinned here; use the generator's current default and record the versions in the lockfile.
 
 ## TypeScript: Next.js (App Router)
@@ -13,7 +17,7 @@ What to run, where things go, and which libraries implement each production piec
 - Errors: `@sentry/nextjs`, DSN from env.
 - DB: Prisma or Drizzle + Postgres (Supabase/Neon). Migrations committed.
 - Auth: Supabase Auth, Clerk, or Auth.js. Sessions via HttpOnly cookies.
-- Tests: vitest for units, route handler tests with `next-test-api-route-handler` or direct function calls, playwright for the five security tests on `scale`.
+- Tests: vitest for units, route handler tests with `next-test-api-route-handler` or direct function calls, playwright for the six baseline security tests on `scale`.
 - CI: `pnpm install --frozen-lockfile`, `pnpm lint`, `pnpm typecheck` (`tsc --noEmit`), `pnpm test -- --coverage`, `pnpm audit --audit-level=high`, gitleaks, `pnpm build`.
 - Deploy: Vercel (zero config) or Dockerfile (standalone output) for Railway/Fly.
 

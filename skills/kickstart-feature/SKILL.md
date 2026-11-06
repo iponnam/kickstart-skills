@@ -37,7 +37,7 @@ As a <role>, I want <capability> so that <outcome>.
 - personal data involved: yes/no (if yes: which fields, retention, deletion path)
 
 ## Compliance controls touched
-- <IDs from .kickstart/compliance.md, e.g. A01, A03, PRIV-04, PCI-05> or "none"
+- <IDs from .kickstart/compliance.md, e.g. A01:2025, A05:2025, PRIV-04, PCI-05> or "none"
 
 ## Open questions
 - <anything that needs the user>
@@ -49,12 +49,12 @@ Ask the user only the open questions. If there are none, show the acceptance cri
 
 List the files to create or change, the migration if any, the tests to write, and the order. Five to fifteen lines. For `scale`, include rollout notes: feature flag, backward-compatible migration (expand then contract), and the rollback path.
 
-Call `kickstart-compliance` mentally: if the feature touches auth, personal data, payments, logging, file upload, third-party data sharing or AI model calls, list the applicable control rows from `.kickstart/compliance.md` and state how each is satisfied in the plan. This is where compliance becomes organic: it is one paragraph in the plan, not a separate process.
+If the feature touches auth, personal data, payments, logging, file upload, third-party data sharing or AI model calls, use `kickstart-compliance`: it re-verifies the affected framework records when they are more than 60 days old, then lists the applicable control rows from `.kickstart/compliance.md`. State how each is satisfied in the plan. Do not cite a deadline or obligation from memory. This is where compliance becomes organic: it is one paragraph in the plan, not a separate process.
 
 ## Step 3: Build
 
 - Follow the stack conventions in `project.md` and the existing code around the change. Match naming, folder layout, error handling and logging patterns already in use.
-- Validate input at the boundary. Authorise on the server. Parameterise queries. Log the event without PII. These are not optional; they map to OWASP A01, A03, A09.
+- Validate input at the boundary. Authorise on the server. Parameterise queries. Log the event without PII. These are not optional; they map to OWASP A01:2025, A05:2025 and A09:2025.
 - Migrations: additive first. Never drop or rename a column in the same release that stops writing to it.
 - Keep the diff small and focused. No drive-by refactors; note them for a separate change.
 - Update `.env.example` and the README when a new variable or command appears.
