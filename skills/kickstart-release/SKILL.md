@@ -29,10 +29,12 @@ Run and report each as pass / warn / fail:
 | 10 | Monitoring | error tracker DSN set in prod, health endpoint reachable, uptime check exists | any missing (`scale`); warn for `pet` |
 | 11 | Compliance | `.kickstart/compliance.md` rows touched since last release have status and evidence; framework records re-verified within 60 days via `kickstart-compliance` (its `freshness.py check`) so the release is judged against current deadlines and obligations | stale rows, or a framework changed and the checklist was not updated |
 | 12 | Rollback plan | `docs/runbook.md` rollback section present and matches the hosting platform | missing |
+| 13 | Features converged | every `specs/NNN-*/` changed since the last tag has `status: done` and its last converge run reported Converged | a shipped feature with open or appended tasks |
+| 14 | Bugs verified and constitution respected | every `.kickstart/bugs/*/verification.md` changed since the last tag says `verified`; no unjustified constitution exception in the shipped plans | a `partial` or `failed` bug fix, or an exception missing from Complexity Tracking |
 
 In `enforced` mode, any `fail` stops here. In `advised` mode, list the fails, say "ADVISED: would have blocked", and ask for an explicit "proceed anyway".
 
-Show the result as a 12-line table, then a one-line verdict.
+Show the result as a 14-line table, then a one-line verdict.
 
 ## Step 2: Version and changelog
 

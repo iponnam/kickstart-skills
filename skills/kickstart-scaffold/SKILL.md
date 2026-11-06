@@ -73,12 +73,13 @@ Implement the OWASP controls from `kickstart-compliance/references/owasp-top10.m
 - `docs/architecture.md`: a diagram in Mermaid, request flow, data model summary, the "why" for each major choice (link to `.kickstart/decisions/`).
 - `docs/runbook.md`: how to deploy, roll back, rotate a secret, restore a backup, handle an incident (short).
 - `CONTRIBUTING.md`: branch naming, commit style (Conventional Commits), PR checklist.
+- `.kickstart/constitution.md` exists (from `kickstart-constitution`); the docs link to it.
 - `.kickstart/decisions/0001-stack.md` (from stack-advisor), `0002-auth.md`, `0003-database.md` in ADR shape.
 - `.kickstart/decisions/threat-model.md`: 10–20 lines for `pet`, a table of assets, threats, mitigations for `scale`.
 
 ### Phase 7: First feature
 
-Implement the user's first feature end to end using the `kickstart-feature` workflow in compressed form: a short spec in `docs/features/0001-<name>.md`, the data model change with migration, the API or server action, the UI, tests, and a line in the changelog. This proves the whole chain works and gives the user something real on day one.
+Build the user's first feature end to end through the `kickstart-feature` workflow, using its pet-project path even for `scale` projects so day one stays short: `specs/001-<slug>/spec.md`, up to three clarification questions, `plan.md` gated by the constitution, `tasks.md` with tests first, the consistency check, implementation, and a converge pass that must report Converged. That covers the data model and migration, the API or server action, the UI, tests, and a changelog line. This proves the whole chain works and gives the user something real on day one.
 
 ### Phase 8: Hand-off
 

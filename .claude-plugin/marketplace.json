@@ -3,14 +3,14 @@
   "owner": { "name": "iponnam", "url": "https://github.com/iponnam" },
   "metadata": {
     "description": "Production-grade projects from one command. Stack-agnostic skills for scaffolding, auditing, security, compliance and guardrails.",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "kickstart",
       "source": "./",
       "description": "One command to make any project production-grade: stack advice, scaffolding, audits with numbers, OWASP + compliance checklists, and enforced or advised guardrails.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "development",
       "keywords": ["production", "security", "owasp", "compliance", "scaffold", "audit"]
     }

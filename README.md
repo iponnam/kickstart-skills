@@ -68,7 +68,9 @@ You can call any skill directly, but `/kickstart` routes to them for you.
 | [`kickstart-audit`](skills/kickstart-audit/SKILL.md) | Existing repo, or "how healthy is this codebase" | Runs `scripts/audit.py` to measure security, dependencies, tests, CI, docs and compliance. Produces an executive summary with a 0–100 score and a drill-down report. Every proposed change comes with before/after numbers. |
 | [`kickstart-compliance`](skills/kickstart-compliance/SKILL.md) | During setup, or "what compliance do I need" | OWASP Top 10 is always on. Recommends further frameworks from 85 records (SOC 2, ISO/IEC 27001, GDPR, HIPAA, PCI DSS, DPDPA, DORA, NIS 2, EU AI Act, RBI, SEBI, MAS, SAMA…) based on your region and industry. Every record cites its official governing body and is re-verified when older than 60 days. You pick. Writes engineering-level checklists, not legal fluff. |
 | [`kickstart-guardrails`](skills/kickstart-guardrails/SKILL.md) | During setup, or "add pre-commit hooks" | Installs the enforced or advised guardrails: secret scanning, dependency audit, lint, tests, and agent hooks. Same checks locally, in CI, and in the agent. |
-| [`kickstart-feature`](skills/kickstart-feature/SKILL.md) | "Add a feature", "build X", "implement Y" | Spec, plan, build, test, review. Reads `.kickstart/project.md` so every feature respects the stack, scale and compliance decisions. |
+| [`kickstart-constitution`](skills/kickstart-constitution/SKILL.md) | During setup, or "add a principle", "change our rules" | Writes `.kickstart/constitution.md`: versioned MUST/SHOULD rules for security, compliance, tests, guardrails, stack and simplicity. Every plan is checked against it. |
+| [`kickstart-feature`](skills/kickstart-feature/SKILL.md) | "Add a feature", "build X", "implement Y", "continue the feature" | Spec-driven workflow: specify, clarify, plan, tasks, consistency check, implement, converge. Writes `spec.md`, `plan.md` and `tasks.md` under `specs/NNN-feature/`, tests first, and stops only when the code is shown to meet the spec. Picks up where a feature left off. |
+| [`kickstart-bugfix`](skills/kickstart-bugfix/SKILL.md) | "This crashes", "bug", a pasted error or issue link | Assess the root cause, fix it with a failing regression test first, then verify the original symptom is gone. Ends with a verified, partial or failed verdict on file. |
 | [`kickstart-release`](skills/kickstart-release/SKILL.md) | "Ship it", "release", "deploy to production" | Pre-release checklist: tests, vulnerabilities, secrets, migrations, rollback plan, changelog, monitoring. Blocks or warns per your enforcement choice. |
 | [`kickstart-refresh`](skills/kickstart-refresh/SKILL.md) | Monthly, or "update dependencies" | Dependency and vulnerability refresh. Groups updates by risk, runs tests between groups, re-audits, and reports the delta in numbers. |
 
@@ -94,11 +96,15 @@ The depth is scaled to your answer to "pet project or scale?". A weekend project
 your-project/
 ├── .kickstart/
 │   ├── project.md        # stack, scale, enforcement, owners: the source of truth for agents
+│   ├── constitution.md   # versioned MUST/SHOULD rules every plan is checked against
 │   ├── compliance.md     # chosen frameworks and control checklist with status
 │   ├── cache/            # official-source records and prices, each with last_verified (24h for stack, 60d for compliance)
 │   ├── decisions/        # one file per architectural decision (ADR format)
+│   ├── bugs/<slug>/      # assessment.md, fix.md, verification.md per bug
 │   └── audit/
 │       └── latest.md     # most recent audit summary and score
+├── specs/
+│   └── 001-feature/      # spec.md, plan.md, tasks.md, research.md, data-model.md, contracts/, quickstart.md, checklists/
 ├── CLAUDE.md             # short block pointing agents at .kickstart/ (also works as AGENTS.md)
 └── ...
 ```
@@ -160,6 +166,30 @@ kickstart → audit:
   ...
 ```
 
+**Adding a feature**
+
+```
+> Tutors should get an email reminder 24 hours before each booking.
+
+kickstart → feature: Created specs/004-booking-reminders/spec.md
+  2 user stories, 6 requirements (FR-001–FR-006), 2 success criteria, 1 open question.
+  Q1: Should students also get the reminder?  A) Yes (recommended)  B) Tutors only
+> A
+
+  Spec updated. Approve to plan?
+> yes
+
+  plan.md: constitution check 8/8 pass. Compliance: GDPR Art. 6 lawful basis (contract),
+  PRIV-RETENTION (reminder logs kept 30 days). tasks.md: 14 tasks, tests first.
+  Consistency check: 0 critical, 1 medium (term "session" vs "booking", fixed).
+  Approve to build?
+> yes
+
+  Implementing… 14/14 tasks done, 9 tests green.
+  Converge: FR-005 (timezone handling) partial → appended T015.
+  Implementing T015… Converge: Converged. Changelog updated, PR ready.
+```
+
 ---
 
 ## Philosophy
@@ -183,6 +213,10 @@ kickstart-skills/
 ├── LICENSE                  # MIT
 └── README.md
 ```
+
+## Credits
+
+The spec-driven feature workflow, the constitution and the bug process are adapted from [GitHub Spec Kit](https://github.com/github/spec-kit) (MIT). Kickstart adds mandatory tests, compliance gates and the freshness rules. Details in [docs/ATTRIBUTION.md](docs/ATTRIBUTION.md).
 
 ## Contributing
 

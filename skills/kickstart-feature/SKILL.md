@@ -1,88 +1,76 @@
 ---
 name: kickstart-feature
-description: Day-to-day feature workflow for a kickstarted project: spec, plan, build, test, review. Reads .kickstart/project.md and .kickstart/compliance.md so every feature respects the chosen stack, scale, enforcement and compliance controls without the user re-explaining anything. Use when the user says "add a feature", "build X", "implement Y", "I want users to be able to…", or any request to change product behaviour in a project that has a .kickstart directory.
+description: Spec-driven feature workflow for a kickstarted project. Takes a plain-language request through specify, clarify, plan, tasks, a consistency check, implement and converge, writing spec.md, plan.md, tasks.md and design files under specs/NNN-feature/. Every plan is gated against .kickstart/constitution.md and the compliance checklist; tests come first; the loop ends only when the code is shown to satisfy the spec. Picks up wherever the feature left off. Use when the user says "add a feature", "build X", "implement Y", "I want users to be able to…", "write a spec", "plan this", "break this into tasks", "continue the feature", or any request to change product behaviour.
 ---
 
 # kickstart-feature
 
-Make features the same way every time: a short spec, a plan the user can read, code that follows the project's conventions, tests that prove it, and a review against the compliance checklist. Compressed for `pet`, full for `scale`.
+Every feature goes through the same stages, leaving reviewable files behind. The user only has to describe what they want; this skill works out which stage comes next.
 
-## Step 0: Load context (silently)
+Adapted from GitHub Spec Kit's Spec-Driven Development workflow (MIT), with kickstart's additions: mandatory tests, the compliance checklist, and the freshness rule. See `docs/ATTRIBUTION.md` in the kickstart repository.
 
-Read `.kickstart/project.md` (stack, commands, conventions, scale, enforcement) and `.kickstart/compliance.md` (controls). If `.kickstart/` is missing, say so in one line and offer `kickstart` first; if the user declines, continue with sensible defaults.
+## Stages
 
-## Step 1: Spec (5 minutes, not 50)
+| Stage | Output | Procedure | Pet projects |
+|---|---|---|---|
+| 1. Specify | `specs/NNN-slug/spec.md` | `references/specify.md` | Yes, shorter |
+| 2. Clarify | answers written into `spec.md` | `references/clarify.md` | Up to 3 questions |
+| 3. Plan | `plan.md`, plus `research.md`, `data-model.md`, `contracts/`, `quickstart.md` | `references/plan.md` | `plan.md` only, unless the feature has an API or new tables |
+| 4. Tasks | `tasks.md` | `references/tasks.md` | Yes |
+| 5. Check | consistency report (read-only) | `references/analyze.md` | Yes, quick |
+| 6. Implement | code, tests, ticked `tasks.md` | `references/implement.md` | Yes |
+| 7. Converge | appended tasks, or "Converged" | `references/converge.md` | Yes |
+| Optional: requirements checklist | `checklists/<domain>.md` | `references/checklist.md` | When asked |
 
-Write `docs/features/NNNN-<slug>.md`:
+Read only the reference file for the stage you are running.
 
-```markdown
-# NNNN: <feature name>
-- status: draft | building | done
-- date: YYYY-MM-DD
-- owner: <user>
+## Step 0: Load context and find the stage
 
-## User story
-As a <role>, I want <capability> so that <outcome>.
+Read silently:
 
-## Acceptance criteria
-- [ ] <observable behaviour 1>
-- [ ] <observable behaviour 2>
-- [ ] <error or edge case>
+- `.kickstart/project.md` for stack, commands, scale and enforcement.
+- `.kickstart/constitution.md` for the rules. If it is missing, run `kickstart-constitution` first; if the user declines, continue and say plans are not gated.
+- `.kickstart/compliance.md` for the controls.
 
-## Out of scope
-- <what we are not doing now>
+Then decide where to start:
 
-## Data
-- new or changed tables/fields: <list or "none">
-- personal data involved: yes/no (if yes: which fields, retention, deletion path)
+- **New request** with no matching folder under `specs/`: create the next number, `specs/NNN-slug/`, three digits, slug from the request in 2–4 words. Start at Stage 1. If the repo uses git, create the branch `NNN-slug` unless the user works on one branch.
+- **Existing feature** (the user names it, or the current branch matches `NNN-slug`): pick the first stage whose output is missing or stale:
+  - no `spec.md`, start at 1
+  - `spec.md` has `[NEEDS CLARIFICATION]` markers, run 2
+  - no `plan.md`, or `spec.md` changed after `plan.md`, run 3
+  - no `tasks.md`, or `plan.md` changed after `tasks.md`, run 4 then 5
+  - unticked tasks in `tasks.md`, run 6
+  - all ticked, run 7
+- **Explicit request** ("clarify the spec", "just plan it", "check consistency", "converge"): run that stage.
 
-## Compliance controls touched
-- <IDs from .kickstart/compliance.md, e.g. A01:2025, A05:2025, PRIV-04, PCI-05> or "none"
+## Review checkpoints
 
-## Open questions
-- <anything that needs the user>
-```
+Pause for the user at three points, with a short summary and the file links:
 
-Ask the user only the open questions. If there are none, show the acceptance criteria and proceed unless they object. For `pet`, the spec can be the user story and three acceptance criteria.
+1. After Stages 1–2: "Here is the spec. Approve, or tell me what to change."
+2. After Stages 3–5: "Here is the plan and the task list. The check found <n> issues. Approve to start building."
+3. After Stage 7: either "Converged" or the list of appended tasks.
 
-## Step 2: Plan
+If the user says "go all the way" or "don't stop", run straight through, but still stop on any CRITICAL finding from Stage 5 or Stage 7.
 
-List the files to create or change, the migration if any, the tests to write, and the order. Five to fifteen lines. For `scale`, include rollout notes: feature flag, backward-compatible migration (expand then contract), and the rollback path.
+## Rules that apply to every stage
 
-If the feature touches auth, personal data, payments, logging, file upload, third-party data sharing or AI model calls, use `kickstart-compliance`: it re-verifies the affected framework records when they are more than 60 days old, then lists the applicable control rows from `.kickstart/compliance.md`. State how each is satisfied in the plan. Do not cite a deadline or obligation from memory. This is where compliance becomes organic: it is one paragraph in the plan, not a separate process.
+- **Constitution first.** A conflict with a MUST principle is CRITICAL. Fix the spec, plan or tasks. Never reinterpret the principle. If the principle itself should change, use `kickstart-constitution`.
+- **Tests are mandatory.** Unlike Spec Kit, where tests are optional, every requirement and acceptance scenario gets a test, written before the code.
+- **Compliance is part of the plan.** If the feature touches personal data, auth, payments, logging, file upload, third-party sharing or AI calls, `kickstart-compliance` re-verifies the affected framework records when they are more than 60 days old and lists the controls. The plan states how each is met. Never cite a deadline or obligation from memory.
+- **Stack facts are fresh.** Any library or API version in the plan is checked on its official page within 24 hours, under the freshness rule in `kickstart-stack-advisor`.
+- **Stable IDs.** Requirements are `FR-001…`, success criteria `SC-001…`, acceptance scenarios `US1/AC1…`, tasks `T001…`, checklist items `CHK001…`. Never renumber. Append.
+- **What, then how.** `spec.md` says what and why, with no languages, frameworks or APIs. `plan.md` says how.
+- **Small slices.** If the spec has more than about five user stories or the plan exceeds roughly two days, split into several features and deliver P1 first.
 
-## Step 3: Build
+## Finish
 
-- Follow the stack conventions in `project.md` and the existing code around the change. Match naming, folder layout, error handling and logging patterns already in use.
-- Validate input at the boundary. Authorise on the server. Parameterise queries. Log the event without PII. These are not optional; they map to OWASP A01:2025, A05:2025 and A09:2025.
-- Migrations: additive first. Never drop or rename a column in the same release that stops writing to it.
-- Keep the diff small and focused. No drive-by refactors; note them for a separate change.
-- Update `.env.example` and the README when a new variable or command appears.
+When converged:
 
-## Step 4: Test
+- Set `status: done` in `spec.md`.
+- Add a line under `Unreleased` in `CHANGELOG.md`.
+- Update `.kickstart/compliance.md` rows the feature touched, with evidence.
+- Commit with Conventional Commits. For `scale`, offer to open a pull request whose body links the spec, lists the tests, and names the compliance rows changed.
 
-- Unit tests for logic, one integration test per new endpoint or server action, and a negative test (unauthorised, invalid input) for every new entry point.
-- Run the project's `test` and `lint` commands from `project.md`. Fix failures. Do not weaken a test to make it pass.
-- If `enforcement` is `enforced`, the hooks will run on commit and push; make the commit pass the gates rather than bypassing them.
-
-## Step 5: Review
-
-Before saying done, run this self-review and show the result as a short checklist:
-
-- [ ] Every acceptance criterion has a test or a manual verification note
-- [ ] No new secret, no PII in logs, no string-built query, no `eval`-class call
-- [ ] Authorisation checked for every new route or action
-- [ ] Compliance rows touched are updated in `.kickstart/compliance.md` (status and evidence)
-- [ ] Migration is backward compatible (scale) or at least reversible (pet)
-- [ ] Docs updated: feature spec status `done`, README/env if needed, CHANGELOG line under Unreleased
-- [ ] Commits follow Conventional Commits and are grouped sensibly
-
-For `scale`, offer to open a pull request with the spec summary, test evidence and the compliance rows as the PR body.
-
-## Step 6: Report
-
-Tell the user in under ten lines: what was built, how to try it, what tests cover it, any compliance rows changed, and anything left open. Then stop.
-
-## When the feature is big
-
-If the plan exceeds roughly 15 files or two days, split it into milestones in the spec and deliver the first milestone end to end. A vertical slice that works beats a horizontal layer that does not.
+Tell the user in under ten lines: what was built, how to try it (from `quickstart.md` when it exists), what the tests cover, compliance rows changed, and anything deferred.

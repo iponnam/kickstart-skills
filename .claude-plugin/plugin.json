@@ -1,6 +1,6 @@
 {
   "name": "kickstart",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "One command to make any project production-grade: stack advice, scaffolding, audits with numbers, OWASP + compliance checklists, and enforced or advised guardrails. Stack-agnostic.",
   "author": { "name": "iponnam", "url": "https://github.com/iponnam" },
   "homepage": "https://github.com/iponnam/kickstart-skills",
@@ -14,7 +14,9 @@
     "./skills/kickstart-audit",
     "./skills/kickstart-compliance",
     "./skills/kickstart-guardrails",
+    "./skills/kickstart-constitution",
     "./skills/kickstart-feature",
+    "./skills/kickstart-bugfix",
     "./skills/kickstart-release",
     "./skills/kickstart-refresh"
   ]

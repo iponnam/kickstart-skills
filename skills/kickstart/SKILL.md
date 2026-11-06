@@ -47,10 +47,11 @@ Record both answers in `.kickstart/project.md` before continuing.
 4. Invoke **kickstart-stack-advisor** with the description, scale answer, region and industry. It returns 2–3 options with costs and trade-offs. Present them. Let the user choose. If the user is non-technical, recommend one explicitly and say why in two sentences.
 5. Invoke **kickstart-compliance** with region, industry and stack. It proposes frameworks (OWASP Top 10 always on). User confirms or edits the list. It writes `.kickstart/compliance.md`.
 6. Write `.kickstart/project.md` (template below) with everything decided so far.
-7. Invoke **kickstart-scaffold** with the chosen stack. It creates the runnable project, CI, tests, scanning, docs, auth, database, deploy config and the first feature.
-8. Invoke **kickstart-guardrails** with the enforcement choice. It installs hooks, CI gates and agent hooks.
-9. Write the `CLAUDE.md` block (below). If `AGENTS.md` exists or the user's agent is not Claude, write the same block there.
-10. Finish with a short summary: what was created, how to run it, and the three most useful next commands (`kickstart-feature`, `kickstart-release`, `kickstart-refresh` by their plain-language triggers).
+7. Invoke **kickstart-constitution**. It writes `.kickstart/constitution.md`, the versioned rules every later plan is checked against, seeded from the decisions so far, and asks one question about house rules.
+8. Invoke **kickstart-scaffold** with the chosen stack. It creates the runnable project, CI, tests, scanning, docs, auth, database, deploy config and the first feature, built through the `kickstart-feature` spec workflow.
+9. Invoke **kickstart-guardrails** with the enforcement choice. It installs hooks, CI gates and agent hooks.
+10. Write the `CLAUDE.md` block (below). If `AGENTS.md` exists or the user's agent is not Claude, write the same block there.
+11. Finish with a short summary: what was created, how to run it, and the most useful next steps by their plain-language triggers: add a feature, fix a bug, release, refresh dependencies.
 
 ## Mode B: Existing project
 
@@ -59,9 +60,10 @@ Record both answers in `.kickstart/project.md` before continuing.
 3. Invoke **kickstart-audit**. It runs its audit script, produces the executive summary with a 0–100 score, and a ranked list of proposed changes, each with before/after numbers and effort. Show the executive summary. Do not show the full report unless the user asks for "details".
 4. Invoke **kickstart-compliance** with the audit's findings so the compliance checklist reflects reality (controls already met are marked implemented).
 5. Write `.kickstart/project.md` with the detected stack, decisions and the audit score.
-6. Offer the proposed changes one at a time, highest impact first. Apply only what the user picks. After each applied change, re-run the relevant audit check and show the number moving.
-7. Invoke **kickstart-guardrails** at the end, or as soon as the user picks a change that adds hooks or CI.
-8. Write the `CLAUDE.md` block.
+6. Invoke **kickstart-constitution**, recording the conventions the codebase actually follows.
+7. Offer the proposed changes one at a time, highest impact first. Apply only what the user picks. After each applied change, re-run the relevant audit check and show the number moving.
+8. Invoke **kickstart-guardrails** at the end, or as soon as the user picks a change that adds hooks or CI.
+9. Write the `CLAUDE.md` block.
 
 Never rewrite an existing project's structure wholesale. Propose, show numbers, apply what is chosen.
 
@@ -72,8 +74,9 @@ Read `.kickstart/project.md` and `.kickstart/audit/latest.md` if present. Show a
 - Stack, scale, enforcement
 - Last audit score and date
 - Compliance frameworks and the count of controls implemented / total
+- Constitution version, and features under `specs/` that are not yet converged
 - Any open proposed changes from the last audit
-- What they can do next: add a feature, release, refresh dependencies, re-audit
+- What they can do next: add a feature, fix a bug, release, refresh dependencies, re-audit
 
 Then wait for instruction. If the last audit is older than 30 days, offer to re-run it.
 
@@ -95,7 +98,7 @@ Write it exactly in this shape so every other skill can parse it.
 - region: <countries or regions>
 - industry: <industry>
 - created: <YYYY-MM-DD>
-- kickstart_version: 0.1.0
+- kickstart_version: 0.2.0
 
 ## Stack
 - language: <e.g. TypeScript>
@@ -138,9 +141,9 @@ Append this block if it is not already present. Keep it short. It is what makes 
 ## Project guardrails (kickstart)
 
 This project was set up with kickstart. Before making changes:
-1. Read `.kickstart/project.md` for stack, scale, enforcement and conventions. Follow them.
+1. Read `.kickstart/constitution.md` and `.kickstart/project.md`. The constitution's MUST rules are non-negotiable.
 2. Read `.kickstart/compliance.md` before touching auth, data storage, logging, payments or anything user-facing.
-3. For new features use the kickstart-feature workflow (spec, plan, build, test, review).
+3. For product changes use the kickstart-feature workflow: spec, clarify, plan, tasks, consistency check, implement, converge, with files under `specs/NNN-feature/`. For bugs use kickstart-bugfix: assess, fix with a regression test, verify.
 4. Before a release run the kickstart-release checklist.
 5. Never commit secrets. Never disable a guardrail to make a check pass. Fix the cause.
 6. Never state a price, library version, compliance deadline or framework version from memory. Use `.kickstart/cache/` only if its `last_verified` is within the allowed age: 24 hours for tech stack facts, 60 days for compliance framework records. Otherwise re-check the official source first and update the cache.
@@ -183,6 +186,8 @@ Tell the user this once, during setup, in one sentence.
 | Measure an existing project | `kickstart-audit` |
 | Choose frameworks, write checklist | `kickstart-compliance` |
 | Install hooks and CI gates | `kickstart-guardrails` |
-| Build a feature | `kickstart-feature` |
+| Write or amend the project rules | `kickstart-constitution` |
+| Build a feature (spec, clarify, plan, tasks, check, implement, converge) | `kickstart-feature` |
+| Fix a bug (assess, fix, verify) | `kickstart-bugfix` |
 | Ship a version | `kickstart-release` |
 | Update dependencies | `kickstart-refresh` |
