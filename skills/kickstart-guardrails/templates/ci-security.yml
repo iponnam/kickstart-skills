@@ -1,0 +1,62 @@
+# Security job for GitHub Actions. Merge into .github/workflows/ci.yml.
+# Set ENFORCED to "true" or "false" to match .kickstart/project.md.
+# Pin action versions to a digest for scale projects.
+
+name: security
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  ENFORCED: "true"
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  secrets:
+    name: secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        continue-on-error: ${{ env.ENFORCED != 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  dependencies:
+    name: dependency vulnerabilities
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: osv-scanner (all lockfiles)
+        uses: google/osv-scanner-action/osv-scanner-action@v1
+        continue-on-error: ${{ env.ENFORCED != 'true' }}
+        with:
+          scan-args: |
+            --recursive
+            --skip-git
+            ./
+      # Ecosystem-native scan (uncomment the one that applies):
+      # - run: npm audit --audit-level=high
+      # - run: pipx run pip-audit -r requirements.txt --strict
+      # - run: cargo install cargo-audit && cargo audit
+      # - run: go install golang.org/x/vuln/cmd/govulncheck@latest && govulncheck ./...
+      # - run: gem install bundler-audit && bundle-audit check --update
+      # - run: composer audit
+      # - run: dotnet list package --vulnerable --include-transitive | tee out.txt && ! grep -q "has the following vulnerable packages" out.txt
+
+  lockfile:
+    name: lockfile present
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: check lockfile
+        run: |
+          ls package-lock.json pnpm-lock.yaml yarn.lock bun.lockb poetry.lock uv.lock Pipfile.lock requirements.txt go.sum Cargo.lock Gemfile.lock composer.lock packages.lock.json pubspec.lock mix.lock 2>/dev/null | head -n1 | grep . \
+            || { echo "::error::No lockfile found. Commit one so installs are reproducible."; [ "$ENFORCED" != "true" ]; }

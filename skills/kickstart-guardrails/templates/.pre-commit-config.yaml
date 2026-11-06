@@ -1,0 +1,42 @@
+# .pre-commit-config.yaml — installed by kickstart-guardrails (Python projects)
+# Install: pipx install pre-commit && pre-commit install --hook-type pre-commit --hook-type commit-msg --hook-type pre-push
+# Mode is read at runtime by .kickstart/hooks/kickstart-mode.sh
+
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=5000"]
+      - id: detect-private-key
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.0
+    hooks:
+      - id: ruff
+        args: ["--fix"]
+      - id: ruff-format
+  - repo: local
+    hooks:
+      - id: no-secret-files
+        name: no .env or key files
+        entry: sh .kickstart/hooks/kickstart-mode.sh env-files sh .kickstart/hooks/no-secret-files.sh
+        language: system
+        pass_filenames: true
+      - id: conventional-commit
+        name: conventional commit message
+        entry: sh .kickstart/hooks/kickstart-mode.sh commit-msg sh .kickstart/hooks/conventional-commit.sh
+        language: system
+        stages: [commit-msg]
+      - id: tests
+        name: tests
+        entry: sh .kickstart/hooks/kickstart-mode.sh tests {{TEST}}
+        language: system
+        pass_filenames: false
+        stages: [pre-push]

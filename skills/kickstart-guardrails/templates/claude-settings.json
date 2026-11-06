@@ -1,0 +1,25 @@
+{
+  "_comment": "Merge into the project's .claude/settings.json. Hooks call the same scripts as git hooks; mode is read from .kickstart/project.md.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'cmd=$(cat | python3 -c \"import sys,json; print(json.load(sys.stdin).get(\\\"tool_input\\\",{}).get(\\\"command\\\",\\\"\\\"))\"); case \"$cmd\" in *\"git commit\"*) sh .kickstart/hooks/kickstart-mode.sh secrets sh .kickstart/hooks/secret-scan.sh staged && sh .kickstart/hooks/kickstart-mode.sh env-files sh .kickstart/hooks/no-secret-files.sh $(git diff --cached --name-only) ;; *\"git push\"*) sh .kickstart/hooks/kickstart-mode.sh tests sh .kickstart/hooks/run-tests.sh ;; esac'"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'p=$(cat | python3 -c \"import sys,json; print(json.load(sys.stdin).get(\\\"tool_input\\\",{}).get(\\\"file_path\\\",\\\"\\\"))\"); sh .kickstart/hooks/kickstart-mode.sh env-files sh .kickstart/hooks/no-secret-files.sh \"$p\"'"
+          }
+        ]
+      }
+    ]
+  }
+}

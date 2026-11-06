@@ -1,0 +1,28 @@
+# lefthook.yml — installed by kickstart-guardrails
+# Replace {{LINT}} / {{TEST}} / {{TYPECHECK}} with the project's commands from .kickstart/project.md.
+# Mode (enforced | advised) is read at runtime by .kickstart/hooks/kickstart-mode.sh
+
+pre-commit:
+  parallel: true
+  commands:
+    secrets:
+      run: sh .kickstart/hooks/kickstart-mode.sh secrets sh .kickstart/hooks/secret-scan.sh staged
+    env-files:
+      run: sh .kickstart/hooks/kickstart-mode.sh env-files sh .kickstart/hooks/no-secret-files.sh {staged_files}
+    large-files:
+      run: sh .kickstart/hooks/kickstart-mode.sh large-files sh .kickstart/hooks/large-files.sh {staged_files}
+    lint:
+      glob: "*.{js,jsx,ts,tsx,py,go,rs,rb,php,cs,java,kt}"
+      run: sh .kickstart/hooks/kickstart-mode.sh lint {{LINT}} {staged_files}
+
+commit-msg:
+  commands:
+    conventional:
+      run: sh .kickstart/hooks/kickstart-mode.sh commit-msg sh .kickstart/hooks/conventional-commit.sh {1}
+
+pre-push:
+  commands:
+    typecheck:
+      run: sh .kickstart/hooks/kickstart-mode.sh typecheck {{TYPECHECK}}
+    tests:
+      run: sh .kickstart/hooks/kickstart-mode.sh tests {{TEST}}
