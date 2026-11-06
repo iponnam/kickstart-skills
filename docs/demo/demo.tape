@@ -9,7 +9,7 @@ Set Theme "Catppuccin Mocha"
 Set TypingSpeed 60ms
 
 Hide
-Type "alias /kickstart='bash ./demo.sh'; alias 3='bash ./apply.sh'; PROMPT='%F{cyan}❯%f '; clear"
+Type "alias /kickstart='bash ./demo.sh'; alias 2='bash ./apply.sh'; PROMPT='%F{cyan}❯%f '; clear"
 Enter
 Show
 
@@ -17,8 +17,8 @@ Sleep 800ms
 Type "/kickstart"
 Sleep 600ms
 Enter
-Sleep 8s
-Type "3"
+Sleep 9s
+Type "2"
 Sleep 500ms
 Enter
 Sleep 4.5s

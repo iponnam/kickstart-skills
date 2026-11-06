@@ -158,27 +158,31 @@ kickstart → compliance: OWASP Top 10 is on. For India + UK + education I recom
 kickstart → scaffold: Creating project… 47 files. CI green. Auth, bookings table, Stripe checkout and first feature "tutor lists availability" done. Run `npm run dev`.
 ```
 
-**Existing project**
+**Existing project** (real output on a Cloudflare Worker, 193k lines of TypeScript; [full report](docs/examples/audit-cloudflare-worker.md))
 
 ```
 > /kickstart
 
 kickstart → audit:
-  Score: 58/100
+  Score: 51/100 (needs work)    Confidence: full (gitleaks + pnpm audit ran)
 
   Critical (fix this week)
-  • 2 secrets committed in history (.env, config/prod.yml)
-  • 7 critical / 23 high dependency vulnerabilities
+  • 4 critical / 37 high dependency vulnerabilities → upgrade
+  • No CI, so a push to main auto-deploys with no test gate
 
-  Executive summary
-  • Security 41/100 · Dependencies 35/100 · Tests 62/100 · CI 80/100 · Docs 70/100 · Compliance 55/100
-  • Est. effort to reach 85: ~14 hours across 9 changes
+  Security 88 · Dependencies 28 · Tests 70 · CI/CD 5 · Docs 45 · Operability 70 · Compliance 20
+  Estimated effort to reach 85: ~16h across 8 changes
 
-  Say "details" for the full report, or pick a change to apply:
-  1. Rotate and purge secrets        → Security 41 → 68   (1.5h)
-  2. Upgrade 23 vulnerable deps      → Dependencies 35 → 88 (3h, 2 breaking)
-  3. Add secret-scanning pre-commit  → prevents recurrence (10m)
+  Where I overrode the script:
+  - Dockerfile missing: doesn't apply. This is a Cloudflare Worker; wrangler.jsonc
+    is the platform config. Operability is really 85.
+  - No .env.example: Workers use .dev.vars (gitignored). What's missing is .dev.vars.example.
+
+  1. Upgrade vulnerable deps        Dependencies 28 → ~100  (overall 51 → ~65)  M 1–4h
+  2. Add CI (typecheck, test, audit, gitleaks)   CI/CD 5 → 75  (overall → ~76)  M 1h
+  3. Add Dependabot (weekly, grouped)            +2 overall                     S 15m
   ...
+  Doing 1 and 2 gets you to about 76. Adding 3–6 gets you to about 85.
 ```
 
 **Adding a feature**
