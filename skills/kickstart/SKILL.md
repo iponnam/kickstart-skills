@@ -1,6 +1,6 @@
 ---
 name: kickstart
-description: "Entry point for making any project production-grade, regardless of tech stack. Use when the user types /kickstart, says \"start a new project\", \"set up this project\", \"make this production ready\", \"audit this repo\", \"is this codebase healthy\", or opens an empty folder and describes something they want to build. Detects new vs existing project, asks two decisions (pet project or scale; enforced or advised guardrails), then routes to kickstart-stack-advisor, kickstart-scaffold, kickstart-audit, kickstart-compliance and kickstart-guardrails. Records every decision in .kickstart/project.md so later sessions follow them automatically."
+description: "Entry point for making any project production-grade, regardless of tech stack. Use when the user types /kickstart, says \"start a new project\", \"I just installed kickstart, what now\", \"how do I use kickstart\", \"get started\", \"set up this project\", \"make this production ready\", \"audit this repo\", \"is this codebase healthy\", or opens an empty folder and describes something they want to build. Detects new vs existing project, asks two decisions (pet project or scale; enforced or advised guardrails), then routes to kickstart-stack-advisor, kickstart-scaffold, kickstart-audit, kickstart-compliance and kickstart-guardrails. Records every decision in .kickstart/project.md so later sessions follow them automatically."
 ---
 
 # kickstart

@@ -20,7 +20,15 @@ Works with Claude Code, Cursor, Codex, OpenCode and any agent that reads the ope
 npx skills add iponnam/kickstart-skills
 ```
 
-Add `-g` to install for every project on your machine instead of just the current one.
+When it asks **which agents**, tick the one you actually use (Claude Code, Cursor, Codex…). Skills are only copied into the agents you select. Add `-g` to install for every project on your machine instead of just the current one.
+
+**Then open the project in your agent and type:**
+
+```
+/kickstart
+```
+
+That's it. It detects whether the folder is new or existing and takes it from there. If `/kickstart` isn't recognised, say "run kickstart" or "set up this project" in plain words.
 
 **Claude Code plugin:**
 
