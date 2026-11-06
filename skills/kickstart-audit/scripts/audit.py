@@ -20,13 +20,16 @@ import subprocess
 import sys
 from pathlib import Path
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 EXCLUDED_DIRS = {
     ".git", "node_modules", "vendor", "dist", "build", "out", ".next", ".nuxt", ".svelte-kit",
     ".venv", "venv", "env", "__pycache__", ".mypy_cache", ".pytest_cache", ".ruff_cache",
     "target", "bin", "obj", ".gradle", ".idea", ".vscode", "coverage", ".turbo", ".cache",
     "Pods", ".dart_tool", "_build", "deps", ".terraform", ".kickstart",
+    # Agent skill/config folders: installed third-party skills, not the project's code.
+    ".agents", ".claude", ".cursor", ".codex", ".windsurf", ".cline", ".gemini", ".opencode",
+    ".amp", ".kilocode", ".roo", ".zed", ".warp", ".continue", ".aider",
 }
 
 LANG_EXT = {
