@@ -1,6 +1,6 @@
 ---
 name: kickstart-audit
-description: Measures an existing codebase's production readiness and reports it as numbers. Runs scripts/audit.py to score security (secrets, vulnerable dependencies, headers, auth patterns), dependencies (lockfile, outdated, scanning), tests (presence, coverage), CI, docs, operability and compliance evidence on a 0–100 scale. Produces an executive summary first, then a drill-down report, then a ranked list of proposed changes each with before/after score and effort. Use when kickstart meets an existing repo, or when the user asks "how healthy is this codebase", "audit this", "what should we fix first", "is this production ready", or before a release.
+description: "Measures an existing codebase's production readiness and reports it as numbers. Runs scripts/audit.py to score security (secrets, vulnerable dependencies, headers, auth patterns), dependencies (lockfile, outdated, scanning), tests (presence, coverage), CI, docs, operability and compliance evidence on a 0–100 scale. Produces an executive summary first, then a drill-down report, then a ranked list of proposed changes each with before/after score and effort. Use when kickstart meets an existing repo, or when the user asks \"how healthy is this codebase\", \"audit this\", \"what should we fix first\", \"is this production ready\", or before a release."
 ---
 
 # kickstart-audit

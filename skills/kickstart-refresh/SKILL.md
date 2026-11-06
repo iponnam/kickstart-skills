@@ -1,6 +1,6 @@
 ---
 name: kickstart-refresh
-description: Monthly dependency and vulnerability refresh for a kickstarted project. Groups updates by risk (security fixes, patch, minor, major), applies them in order with tests between groups, re-runs the audit, and reports the delta in numbers (vulnerabilities before/after, outdated count, score change). Use when the user says "update dependencies", "upgrade packages", "fix vulnerabilities", "monthly maintenance", "dependabot is noisy", or when kickstart notices the last refresh was over 30 days ago.
+description: "Monthly dependency and vulnerability refresh for a kickstarted project. Groups updates by risk (security fixes, patch, minor, major), applies them in order with tests between groups, re-runs the audit, and reports the delta in numbers (vulnerabilities before/after, outdated count, score change). Use when the user says \"update dependencies\", \"upgrade packages\", \"fix vulnerabilities\", \"monthly maintenance\", \"dependabot is noisy\", or when kickstart notices the last refresh was over 30 days ago."
 ---
 
 # kickstart-refresh

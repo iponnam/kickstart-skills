@@ -1,6 +1,6 @@
 ---
 name: kickstart-bugfix
-description: Disciplined bug fixing in three recorded steps: assess (reproduce, find the root cause, judge severity and security impact), fix (failing regression test first, then the smallest change that makes it pass) and verify (re-run the original reproduction and the full suite, ending in a verdict of verified, partial or failed). Writes assessment.md, fix.md and verification.md under .kickstart/bugs/<slug>/. Use when the user reports something broken: "this crashes", "bug", "error when…", "it doesn't work", "fix this issue", a pasted stack trace or an issue link.
+description: "Disciplined bug fixing in three recorded steps: assess (reproduce, find the root cause, judge severity and security impact), fix (failing regression test first, then the smallest change that makes it pass) and verify (re-run the original reproduction and the full suite, ending in a verdict of verified, partial or failed). Writes assessment.md, fix.md and verification.md under .kickstart/bugs/<slug>/. Use when the user reports something broken: \"this crashes\", \"bug\", \"error when…\", \"it doesn't work\", \"fix this issue\", a pasted stack trace or an issue link."
 ---
 
 # kickstart-bugfix

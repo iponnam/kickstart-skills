@@ -4,6 +4,11 @@ import re
 import sys
 from pathlib import Path
 
+try:
+    import yaml
+except ImportError:
+    sys.exit("PyYAML is required: pip install pyyaml")
+
 root = Path(__file__).resolve().parent.parent / "skills"
 ok = True
 for skill_dir in sorted(p for p in root.iterdir() if p.is_dir()):
@@ -14,9 +19,11 @@ for skill_dir in sorted(p for p in root.iterdir() if p.is_dir()):
     m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
     if not m:
         print(f"FAIL {skill_dir.name}: no frontmatter"); ok = False; continue
-    fm = dict(line.split(":", 1) for line in m.group(1).splitlines() if ":" in line)
-    fm = {k.strip(): v.strip() for k, v in fm.items()}
-    name, desc = fm.get("name", ""), fm.get("description", "")
+    try:
+        fm = yaml.safe_load(m.group(1)) or {}
+    except yaml.YAMLError as e:
+        print(f"FAIL {skill_dir.name}: front matter is not valid YAML: {str(e).splitlines()[0]}"); ok = False; continue
+    name, desc = str(fm.get("name", "")), str(fm.get("description", ""))
     if name != skill_dir.name:
         print(f"FAIL {skill_dir.name}: name '{name}' != folder"); ok = False
     if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", name) or len(name) > 64:

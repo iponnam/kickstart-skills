@@ -1,6 +1,6 @@
 ---
 name: kickstart-release
-description: Pre-release checklist and release execution for a kickstarted project: tests green, vulnerability and secret scans clean, migrations reviewed with rollback, changelog and version bump, monitoring and alerts confirmed, compliance evidence updated, then tag and deploy. Blocks on failures in enforced mode, warns in advised mode. Use when the user says "ship it", "release", "deploy to production", "cut a version", "are we ready to launch", or before any production deployment.
+description: "Pre-release checklist and release execution for a kickstarted project: tests green, vulnerability and secret scans clean, migrations reviewed with rollback, changelog and version bump, monitoring and alerts confirmed, compliance evidence updated, then tag and deploy. Blocks on failures in enforced mode, warns in advised mode. Use when the user says \"ship it\", \"release\", \"deploy to production\", \"cut a version\", \"are we ready to launch\", or before any production deployment."
 ---
 
 # kickstart-release

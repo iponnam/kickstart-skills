@@ -1,6 +1,6 @@
 ---
 name: kickstart-feature
-description: Spec-driven feature workflow for a kickstarted project. Takes a plain-language request through specify, clarify, plan, tasks, a consistency check, implement and converge, writing spec.md, plan.md, tasks.md and design files under specs/NNN-feature/. Every plan is gated against .kickstart/constitution.md and the compliance checklist; tests come first; the loop ends only when the code is shown to satisfy the spec. Picks up wherever the feature left off. Use when the user says "add a feature", "build X", "implement Y", "I want users to be able to…", "write a spec", "plan this", "break this into tasks", "continue the feature", or any request to change product behaviour.
+description: "Spec-driven feature workflow for a kickstarted project. Takes a plain-language request through specify, clarify, plan, tasks, a consistency check, implement and converge, writing spec.md, plan.md, tasks.md and design files under specs/NNN-feature/. Every plan is gated against .kickstart/constitution.md and the compliance checklist; tests come first; the loop ends only when the code is shown to satisfy the spec. Picks up wherever the feature left off. Use when the user says \"add a feature\", \"build X\", \"implement Y\", \"I want users to be able to…\", \"write a spec\", \"plan this\", \"break this into tasks\", \"continue the feature\", or any request to change product behaviour."
 ---
 
 # kickstart-feature

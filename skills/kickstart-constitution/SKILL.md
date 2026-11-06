@@ -1,6 +1,6 @@
 ---
 name: kickstart-constitution
-description: Creates and amends the project constitution, .kickstart/constitution.md, a short versioned set of MUST/SHOULD principles that every spec, plan, task list and change in the project is checked against. Seeds it from the kickstart decisions (stack, scale, enforcement, compliance frameworks) so security, testing and compliance rules are binding, not advisory. Use during kickstart setup, or when the user says "add a principle", "change our rules", "update the constitution", "we decided to always/never…", or when a plan needs a rule changed instead of an exception.
+description: "Creates and amends the project constitution, .kickstart/constitution.md, a short versioned set of MUST/SHOULD principles that every spec, plan, task list and change in the project is checked against. Seeds it from the kickstart decisions (stack, scale, enforcement, compliance frameworks) so security, testing and compliance rules are binding, not advisory. Use during kickstart setup, or when the user says \"add a principle\", \"change our rules\", \"update the constitution\", \"we decided to always/never…\", or when a plan needs a rule changed instead of an exception."
 ---
 
 # kickstart-constitution

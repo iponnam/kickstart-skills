@@ -13,6 +13,11 @@ import re
 import sys
 from pathlib import Path
 
+try:
+    import yaml
+except ImportError:
+    sys.exit("PyYAML is required: pip install pyyaml")
+
 ROOT = Path(__file__).resolve().parent.parent
 FW_DIR = ROOT / "skills/kickstart-compliance/references/frameworks"
 CATALOG = ROOT / "skills/kickstart-compliance/references/framework-catalog.md"
@@ -34,6 +39,10 @@ for f in sorted(p for p in FW_DIR.glob("*.md") if p.name != "README.md"):
     if not m:
         print(f"FAIL {f.name}: no front matter"); ok = False; continue
     fm = m.group(1)
+    try:
+        yaml.safe_load(fm)
+    except yaml.YAMLError as e:
+        print(f"FAIL {f.name}: front matter is not valid YAML: {str(e).splitlines()[0]}"); ok = False
     for k in REQUIRED_KEYS:
         if not re.search(rf"^{k}:", fm, re.M):
             print(f"FAIL {f.name}: missing key {k}"); ok = False

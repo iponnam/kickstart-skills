@@ -6,7 +6,7 @@ governing_body: Saudi Central Bank (SAMA)
 type: security
 legal_status: binding-regulation
 region: Saudi Arabia
-industry: finance - newly established entities, regulatory sandbox participants and licence applicants (rulebook scope: Finance Sector, Payment Systems and PSPs, Money Exchange Sector, Regulatory Sandbox)
+industry: "finance - newly established entities, regulatory sandbox participants and licence applicants (rulebook scope: Finance Sector, Payment Systems and PSPs, Money Exchange Sector, Regulatory Sandbox)"
 current_version: Rulebook entry dated 1/1/2022G (28/5/1443H), No. "NA"; status "In-Force"
 superseded_by: none
 official_sources:

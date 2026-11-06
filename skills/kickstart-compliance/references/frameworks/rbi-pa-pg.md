@@ -6,7 +6,7 @@ governing_body: Reserve Bank of India, Department of Payment and Settlement Syst
 type: security
 legal_status: binding-regulation
 region: India (incl. cross-border PA under FEMA)
-industry: payments (bank and non-bank Payment Aggregators: online, physical point-of-sale, cross-border; Payment Gateways "recommended" baseline only; all payment system providers for data storage)
+industry: "payments (bank and non-bank Payment Aggregators: online, physical point-of-sale, cross-border; Payment Gateways \"recommended\" baseline only; all payment system providers for data storage)"
 current_version: PA Master Direction 15 Sept 2025, "effective immediately unless indicated otherwise"; Storage circular 6 April 2018
 superseded_by: none (the 17 March 2020 PA/PG Guidelines, 31 March 2021 clarifications and 31 Oct 2023 PA-CB circular were consolidated and repealed by the 2025 Master Direction, Chapter VI and Annexure-3)
 official_sources:

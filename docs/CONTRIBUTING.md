@@ -24,6 +24,7 @@ Keep `SKILL.md` focused on procedure. Put long reference material in `references
 ## Testing a change
 
 ```bash
+# needs PyYAML: pip install pyyaml
 # frontmatter and structure
 python3 scripts/check-skills.py
 

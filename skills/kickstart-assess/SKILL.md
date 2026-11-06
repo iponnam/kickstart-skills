@@ -1,6 +1,6 @@
 ---
 name: kickstart-assess
-description: Decides whether an idea deserves to be built before any code or spec exists. Five recorded stages (intake, research, define, shape, decide) end in a go, needs-clarification or kill verdict with an auditable scorecard, including compliance exposure and monthly running cost from official sources. A go hands off straight into kickstart (new project) or kickstart-feature (existing project). Use when the user says "I have an idea", "should we build", "is this worth it", "evaluate this idea", "go or no-go", "validate this", "what do you think of building…", or pastes a feature request, ticket or customer ask they are unsure about.
+description: "Decides whether an idea deserves to be built before any code or spec exists. Five recorded stages (intake, research, define, shape, decide) end in a go, needs-clarification or kill verdict with an auditable scorecard, including compliance exposure and monthly running cost from official sources. A go hands off straight into kickstart (new project) or kickstart-feature (existing project). Use when the user says \"I have an idea\", \"should we build\", \"is this worth it\", \"evaluate this idea\", \"go or no-go\", \"validate this\", \"what do you think of building…\", or pastes a feature request, ticket or customer ask they are unsure about."
 ---
 
 # kickstart-assess

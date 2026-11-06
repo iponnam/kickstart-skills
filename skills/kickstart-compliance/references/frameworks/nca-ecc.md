@@ -13,7 +13,7 @@ official_sources:
   - title: NCA - Essential Cybersecurity Controls (regulatory documents page)
     url: https://nca.gov.sa/en/regulatory-documents/controls-list/ecc/
     accessed: 2026-11-06
-  - title: Essential Cybersecurity Controls (ECC-2:2024), English PDF (56 pages, TLP: White)
+  - title: "Essential Cybersecurity Controls (ECC-2:2024), English PDF (56 pages, TLP: White)"
     url: https://cdn.nca.gov.sa/api/files/public/upload/86e09090-44e4-481f-bc28-355673607654_ECC--2024-EN.pdf
     accessed: 2026-11-06
   - title: Guide to Essential Cybersecurity Controls (ECC) Implementation PDF (not fetched in this pass)

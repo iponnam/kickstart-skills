@@ -6,7 +6,7 @@ governing_body: Insurance Regulatory and Development Authority of India (IRDAI)
 type: security
 legal_status: regulator-guideline
 region: India
-industry: finance (insurance: insurers incl. Foreign Re-insurance Branches, insurance intermediaries, Insurance Information Bureau)
+industry: "finance (insurance: insurers incl. Foreign Re-insurance Branches, insurance intermediaries, Insurance Information Bureau)"
 current_version: 2026 Guidelines (circular dated 6 April 2026; listed on irdai.gov.in 08-04-2026), compliance "from the current financial year"
 superseded_by: none (the 2026 Guidelines revise the 2023 Guidelines)
 official_sources:

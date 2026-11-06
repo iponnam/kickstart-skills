@@ -1,6 +1,6 @@
 ---
 name: kickstart-scaffold
-description: Generates a runnable, production-grade new project for any chosen stack: app skeleton, CI, lint and format, tests, secret and dependency scanning, security headers, structured logging, health endpoint, auth, database with migrations, deployment config, documentation, and the user's first real feature. Use after a stack is chosen in kickstart, or when the user says "scaffold", "bootstrap", "create the project", "set up a new repo for X". Stack-agnostic: uses the framework's official generator first, then layers the production pieces on top.
+description: "Generates a runnable, production-grade new project for any chosen stack: app skeleton, CI, lint and format, tests, secret and dependency scanning, security headers, structured logging, health endpoint, auth, database with migrations, deployment config, documentation, and the user's first real feature. Use after a stack is chosen in kickstart, or when the user says \"scaffold\", \"bootstrap\", \"create the project\", \"set up a new repo for X\". Stack-agnostic: uses the framework's official generator first, then layers the production pieces on top."
 ---
 
 # kickstart-scaffold

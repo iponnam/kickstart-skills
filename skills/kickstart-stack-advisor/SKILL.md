@@ -1,6 +1,6 @@
 ---
 name: kickstart-stack-advisor
-description: Turns a plain-language description of what someone wants to build into 2–3 concrete, production-ready stack options with monthly cost estimates (hosting, database, auth, email, payments, AI APIs, monitoring) and honest trade-offs. Adapts depth to the audience: a non-technical founder gets a clear recommendation, an engineer gets the comparison. Use for new projects, "which stack should I use", "what will this cost to run", "should I use X or Y", or when kickstart needs a stack before scaffolding.
+description: "Turns a plain-language description of what someone wants to build into 2–3 concrete, production-ready stack options with monthly cost estimates (hosting, database, auth, email, payments, AI APIs, monitoring) and honest trade-offs. Adapts depth to the audience: a non-technical founder gets a clear recommendation, an engineer gets the comparison. Use for new projects, \"which stack should I use\", \"what will this cost to run\", \"should I use X or Y\", or when kickstart needs a stack before scaffolding."
 ---
 
 # kickstart-stack-advisor

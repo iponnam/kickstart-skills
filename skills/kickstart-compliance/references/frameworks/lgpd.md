@@ -7,7 +7,7 @@ type: privacy
 legal_status: law
 region: Brazil; applies regardless of the controller's seat or where data is located if processing occurs in Brazil, aims to offer goods/services to or process data of individuals located in Brazil, or data was collected in Brazil (Art. 3)
 industry: any
-current_version: Lei 13.709/2018 in force in stages: 28 Dec 2018 (ANPD articles), 18 Sep 2020 (most provisions), 1 Aug 2021 (sanctions Arts. 52-54). Resolution CD/ANPD 15/2024 "Vigente"
+current_version: "Lei 13.709/2018 in force in stages: 28 Dec 2018 (ANPD articles), 18 Sep 2020 (most provisions), 1 Aug 2021 (sanctions Arts. 52-54). Resolution CD/ANPD 15/2024 \"Vigente\""
 superseded_by: none
 official_sources:
   - title: ANPD - Perguntas frequentes (FAQ on LGPD)

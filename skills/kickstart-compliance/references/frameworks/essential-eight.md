@@ -6,7 +6,7 @@ governing_body: Australian Signals Directorate (ASD), Australian Cyber Security 
 type: security
 legal_status: voluntary-standard
 region: Australia
-industry: any (mandated for Australian Government non-corporate Commonwealth entities under government policy: UNVERIFIED)
+industry: "any (mandated for Australian Government non-corporate Commonwealth entities under government policy: UNVERIFIED)"
 current_version: UNVERIFIED (official site unreachable from this session)
 superseded_by: UNVERIFIED
 official_sources:

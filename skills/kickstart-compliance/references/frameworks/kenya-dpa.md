@@ -19,7 +19,7 @@ official_sources:
   - title: Registration of Data Controllers and Data Processors Regulations 2021 (ODPC PDF link; now returns the ODPC home page)
     url: https://www.odpc.go.ke/wp-content/uploads/2024/03/THE-DATA-PROTECTION-REGISTRATION-OF-DATA-CONTROLLERS-AND-DATA-PROCESSORS-REGULATIONS-2021.pdf
     accessed: 2026-11-06
-  - title: Kenya Law - Data Protection Act No. 24 of 2019 (second pass: Playwright with 15 s wait returned HTTP 202 and an empty JS-challenge page)
+  - title: "Kenya Law - Data Protection Act No. 24 of 2019 (second pass: Playwright with 15 s wait returned HTTP 202 and an empty JS-challenge page)"
     url: https://new.kenyalaw.org/akn/ke/act/2019/24
     accessed: 2026-11-06
 last_verified: never

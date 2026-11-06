@@ -6,7 +6,7 @@ governing_body: Securities and Exchange Board of India (SEBI), Information Techn
 type: security
 legal_status: binding-regulation
 region: India
-industry: finance (securities markets: stock exchanges, depositories, clearing corporations, stock brokers, DPs, MFs/AMCs, KRAs, RTAs/QRTAs, portfolio managers, AIFs, VCFs, research analysts, investment advisers and other SEBI REs)
+industry: "finance (securities markets: stock exchanges, depositories, clearing corporations, stock brokers, DPs, MFs/AMCs, KRAs, RTAs/QRTAs, portfolio managers, AIFs, VCFs, research analysts, investment advisers and other SEBI REs)"
 current_version: Version 1.0, 20 Aug 2024, read with clarifications CIR/2024/184 (31 Dec 2024), extension CIR/2025/45 (28 Mar 2025), clarifications CIR/2025/60 (30 Apr 2025), FAQs (11 Jun 2025), extension CIR/2025/96 (30 Jun 2025) and technical clarifications CIR/2025/119 (28 Aug 2025)
 superseded_by: none
 official_sources:

@@ -1,0 +1,35 @@
+name: validate
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Skill front matter and references
+        run: python3 scripts/check-skills.py
+      - name: Framework records
+        run: python3 scripts/check-frameworks.py
+      - name: Catalog is up to date
+        run: |
+          python3 scripts/build-catalog.py
+          git diff --exit-code skills/kickstart-compliance/references/framework-catalog.md
+      - name: Hook scripts parse
+        run: for f in skills/kickstart-guardrails/templates/*.sh; do sh -n "$f"; done
+      - name: Every skill is discovered by the skills CLI
+        run: |
+          npx --yes skills add "$GITHUB_WORKSPACE" --list 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | tee list.log
+          ! grep -qiE "skipped|parse error" list.log
+          expected=$(ls -d skills/*/ | wc -l)
+          found=$(grep -cE '^\|    kickstart' list.log)
+          echo "expected $expected, found $found"
+          test "$found" -eq "$expected"

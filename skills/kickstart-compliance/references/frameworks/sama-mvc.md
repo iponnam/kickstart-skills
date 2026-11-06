@@ -6,7 +6,7 @@ governing_body: Saudi Central Bank (SAMA)
 type: security
 legal_status: binding-regulation
 region: Saudi Arabia
-industry: finance - fintech (e-wallets, lending, crowdfunding, other fintech models); rulebook scope: Finance Sector, Payment Systems and PSPs, Money Exchange Sector, Regulatory Sandbox
+industry: "finance - fintech (e-wallets, lending, crowdfunding, other fintech models); rulebook scope: Finance Sector, Payment Systems and PSPs, Money Exchange Sector, Regulatory Sandbox"
 current_version: Circular 202200000245 dated 21 April 2022; rulebook status "In-Force"
 superseded_by: none
 official_sources:

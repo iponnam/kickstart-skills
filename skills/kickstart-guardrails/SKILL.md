@@ -1,6 +1,6 @@
 ---
 name: kickstart-guardrails
-description: Installs the project's guardrails in enforced or advised mode: pre-commit and pre-push git hooks (secret scanning, lint, tests), CI gates (dependency vulnerabilities, secret scan, tests), repository settings (branch protection, push protection), and agent hooks so Claude Code and other agents cannot commit secrets or skip tests. Same checks locally, in CI and in the agent. Use during kickstart setup, when the user says "add pre-commit hooks", "block secrets from being committed", "make CI fail on vulnerabilities", "enforce tests", or wants to switch between enforced and advised.
+description: "Installs the project's guardrails in enforced or advised mode: pre-commit and pre-push git hooks (secret scanning, lint, tests), CI gates (dependency vulnerabilities, secret scan, tests), repository settings (branch protection, push protection), and agent hooks so Claude Code and other agents cannot commit secrets or skip tests. Same checks locally, in CI and in the agent. Use during kickstart setup, when the user says \"add pre-commit hooks\", \"block secrets from being committed\", \"make CI fail on vulnerabilities\", \"enforce tests\", or wants to switch between enforced and advised."
 ---
 
 # kickstart-guardrails

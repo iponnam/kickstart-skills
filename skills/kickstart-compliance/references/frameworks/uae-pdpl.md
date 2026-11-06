@@ -7,10 +7,10 @@ type: privacy
 legal_status: law
 region: United Arab Emirates (federal; free zones with their own data protection laws, e.g. DIFC and ADGM, are excluded per the law - UNVERIFIED)
 industry: any
-current_version: Federal Decree-Law No. 45 of 2021 (UNVERIFIED: dates and executive regulation status)
+current_version: "Federal Decree-Law No. 45 of 2021 (UNVERIFIED: dates and executive regulation status)"
 superseded_by: UNVERIFIED
 official_sources:
-  - title: UAE Legislation portal - Federal Decree-Law No. 45 of 2021 (blocked: Cloudflare 403 to curl and Playwright)
+  - title: "UAE Legislation portal - Federal Decree-Law No. 45 of 2021 (blocked: Cloudflare 403 to curl and Playwright)"
     url: https://uaelegislation.gov.ae/en/legislations/1972
     accessed: 2026-11-06
 last_verified: never

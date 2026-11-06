@@ -1,11 +1,11 @@
 ---
 id: pipl-china
 name: PIPL (China)
-official_name: Personal Information Protection Law of the People's Republic of China (adopted 20 August 2021: UNVERIFIED)
-governing_body: National People's Congress Standing Committee (legislature); Cyberspace Administration of China and other departments (enforcement: UNVERIFIED)
+official_name: "Personal Information Protection Law of the People's Republic of China (adopted 20 August 2021: UNVERIFIED)"
+governing_body: "National People's Congress Standing Committee (legislature); Cyberspace Administration of China and other departments (enforcement: UNVERIFIED)"
 type: privacy
 legal_status: law
-region: China (extraterritorial reach: UNVERIFIED)
+region: "China (extraterritorial reach: UNVERIFIED)"
 industry: any
 current_version: UNVERIFIED (official source unreachable from this session)
 superseded_by: UNVERIFIED

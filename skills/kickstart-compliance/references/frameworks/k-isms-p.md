@@ -2,11 +2,11 @@
 id: k-isms-p
 name: K-ISMS-P (Korea)
 official_name: Personal Information & Information Security Management System (ISMS-P) certification
-governing_body: Korea Internet & Security Agency (KISA) as certification body (with the Ministry of Science and ICT and the Personal Information Protection Commission: UNVERIFIED)
+governing_body: "Korea Internet & Security Agency (KISA) as certification body (with the Ministry of Science and ICT and the Personal Information Protection Commission: UNVERIFIED)"
 type: security
 legal_status: certification-scheme
 region: South Korea
-industry: any (mandatory ISMS certification for entities above legal thresholds: UNVERIFIED)
+industry: "any (mandatory ISMS certification for entities above legal thresholds: UNVERIFIED)"
 current_version: UNVERIFIED (official site unreachable from this session)
 superseded_by: UNVERIFIED
 official_sources:

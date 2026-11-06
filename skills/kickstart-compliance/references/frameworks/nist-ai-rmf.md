@@ -1,7 +1,7 @@
 ---
 id: nist-ai-rmf
 name: NIST AI RMF 1.0 (+ Generative AI Profile)
-official_name: Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1; and NIST AI 600-1, Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile
+official_name: "Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1; and NIST AI 600-1, Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile"
 governing_body: National Institute of Standards and Technology (NIST), Information Technology Laboratory
 type: ai
 legal_status: voluntary-standard

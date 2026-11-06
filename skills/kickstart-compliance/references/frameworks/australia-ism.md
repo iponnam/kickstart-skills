@@ -6,7 +6,7 @@ governing_body: Australian Signals Directorate (ASD), Australian Cyber Security 
 type: security
 legal_status: voluntary-standard
 region: Australia
-industry: government (and suppliers / IRAP-assessed cloud services: UNVERIFIED)
+industry: "government (and suppliers / IRAP-assessed cloud services: UNVERIFIED)"
 current_version: UNVERIFIED (official site unreachable from this session; ISM is released periodically, current month/year not confirmed)
 superseded_by: UNVERIFIED
 official_sources:
