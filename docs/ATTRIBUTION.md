@@ -2,7 +2,7 @@
 
 ## GitHub Spec Kit
 
-The spec-driven workflow in `kickstart-feature`, the project constitution in `kickstart-constitution`, and the three-step bug process in `kickstart-bugfix` are adapted from [GitHub Spec Kit](https://github.com/github/spec-kit). Kickstart's adaptation is based on the repository as of commit `3ca735b` (2026-11-05).
+The idea assessment in `kickstart-assess`, the spec-driven workflow in `kickstart-feature`, the project constitution in `kickstart-constitution`, and the three-step bug process in `kickstart-bugfix` are adapted from [GitHub Spec Kit](https://github.com/github/spec-kit). Kickstart's adaptation is based on the repository as of commit `3ca735b` (2026-11-05).
 
 What was adapted:
 
@@ -13,6 +13,7 @@ What was adapted:
 - The convergence loop: append-only gap tasks classified as missing, partial, contradicts or unrequested.
 - Constitution versioning (MAJOR, MINOR, PATCH) and the Sync Impact Report.
 - The bug process of assess, fix and test, ending in a verified, partial or failed verdict.
+- The idea assessment stages of intake, research, define, shape and decide; the six-criterion scorecard; the go, needs-clarification and kill verdict rules; and the handoff into specification.
 
 What kickstart changes:
 
@@ -21,6 +22,7 @@ What kickstart changes:
 - Plans include a compliance-controls table, and the consistency check has a compliance pass.
 - Facts follow kickstart's freshness rule: 24 hours for tech stack facts, 60 days for compliance records.
 - Pet projects get a shorter path through the same stages.
+- Idea assessment adds two scorecard criteria, compliance exposure and cost to run, sourced from the framework records and live pricing pages, and a go can hand off to project setup as well as to a feature.
 
 Spec Kit is distributed under the MIT License:
 

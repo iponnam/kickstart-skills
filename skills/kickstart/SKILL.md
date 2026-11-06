@@ -41,7 +41,7 @@ Record both answers in `.kickstart/project.md` before continuing.
 
 ## Mode A: New project
 
-1. Ask what they want to build, in their own words. One open question. Do not ask about tech yet.
+1. Ask what they want to build, in their own words. One open question. Do not ask about tech yet. If `.kickstart/assessments/*/decision.md` has a `go` verdict for this idea, use its handoff block instead of asking, and take its suggested scale and compliance findings as defaults for the next questions. If the user sounds unsure whether the idea is worth building ("thinking about", "not sure if", "would people pay for"), offer a quick go/no-go assessment with **kickstart-assess** first; accept "no" and continue.
 2. Ask Decision 1 and Decision 2.
 3. Ask for compliance context in one question: "Which country or region are your users in, and what industry is this?" (Needed by `kickstart-compliance`. If they say "not sure", default to their likely location and "general SaaS".)
 4. Invoke **kickstart-stack-advisor** with the description, scale answer, region and industry. It returns 2–3 options with costs and trade-offs. Present them. Let the user choose. If the user is non-technical, recommend one explicitly and say why in two sentences.
@@ -76,7 +76,7 @@ Read `.kickstart/project.md` and `.kickstart/audit/latest.md` if present. Show a
 - Compliance frameworks and the count of controls implemented / total
 - Constitution version, and features under `specs/` that are not yet converged
 - Any open proposed changes from the last audit
-- What they can do next: add a feature, fix a bug, release, refresh dependencies, re-audit
+- What they can do next: assess an idea, add a feature, fix a bug, release, refresh dependencies, re-audit
 
 Then wait for instruction. If the last audit is older than 30 days, offer to re-run it.
 
@@ -98,7 +98,7 @@ Write it exactly in this shape so every other skill can parse it.
 - region: <countries or regions>
 - industry: <industry>
 - created: <YYYY-MM-DD>
-- kickstart_version: 0.2.0
+- kickstart_version: 0.3.0
 
 ## Stack
 - language: <e.g. TypeScript>
@@ -143,7 +143,7 @@ Append this block if it is not already present. Keep it short. It is what makes 
 This project was set up with kickstart. Before making changes:
 1. Read `.kickstart/constitution.md` and `.kickstart/project.md`. The constitution's MUST rules are non-negotiable.
 2. Read `.kickstart/compliance.md` before touching auth, data storage, logging, payments or anything user-facing.
-3. For product changes use the kickstart-feature workflow: spec, clarify, plan, tasks, consistency check, implement, converge, with files under `specs/NNN-feature/`. For bugs use kickstart-bugfix: assess, fix with a regression test, verify.
+3. For product changes use the kickstart-feature workflow: spec, clarify, plan, tasks, consistency check, implement, converge, with files under `specs/NNN-feature/`. For bugs use kickstart-bugfix: assess, fix with a regression test, verify. For ideas not yet committed to, use kickstart-assess for a go, clarify or kill decision before specifying.
 4. Before a release run the kickstart-release checklist.
 5. Never commit secrets. Never disable a guardrail to make a check pass. Fix the cause.
 6. Never state a price, library version, compliance deadline or framework version from memory. Use `.kickstart/cache/` only if its `last_verified` is within the allowed age: 24 hours for tech stack facts, 60 days for compliance framework records. Otherwise re-check the official source first and update the cache.
@@ -189,5 +189,6 @@ Tell the user this once, during setup, in one sentence.
 | Write or amend the project rules | `kickstart-constitution` |
 | Build a feature (spec, clarify, plan, tasks, check, implement, converge) | `kickstart-feature` |
 | Fix a bug (assess, fix, verify) | `kickstart-bugfix` |
+| Decide whether an idea is worth building (go, clarify, kill) | `kickstart-assess` |
 | Ship a version | `kickstart-release` |
 | Update dependencies | `kickstart-refresh` |

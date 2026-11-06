@@ -34,6 +34,7 @@ Read silently:
 
 Then decide where to start:
 
+- **From an assessment:** if `.kickstart/assessments/<slug>/decision.md` says `go` and targets `kickstart-feature`, use its handoff block as the request: problem, chosen approach, scope, success metrics, compliance findings and open questions. Link the decision from `spec.md`. Turn carried-forward open questions into `[NEEDS CLARIFICATION]` markers or assumptions.
 - **New request** with no matching folder under `specs/`: create the next number, `specs/NNN-slug/`, three digits, slug from the request in 2–4 words. Start at Stage 1. If the repo uses git, create the branch `NNN-slug` unless the user works on one branch.
 - **Existing feature** (the user names it, or the current branch matches `NNN-slug`): pick the first stage whose output is missing or stale:
   - no `spec.md`, start at 1
